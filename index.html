@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>JoVE 挑戰 2026｜飛資得醫學資訊</title>
+  <meta name="description" content="用影片解鎖實驗室！完成 JoVE 任務參加抽獎，老師申請備課服務拿好禮。請透過貴校圖書館公告的連結參加。">
+  <meta name="theme-color" content="#0b3d5c">
+
+  <!-- Open Graph（LINE / Facebook 分享預覽）：LINE 不執行 JS，所有學校連結共用這組 -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="飛資得醫學資訊">
+  <meta property="og:title" content="JoVE 挑戰 2026｜完成任務，挑戰好禮">
+  <meta property="og:description" content="用影片解鎖實驗室！學生完成任務參加抽獎，老師申請備課服務拿好禮。">
+  <meta property="og:url" content="https://emilychen1212.github.io/flysheet-2026JOVE/">
+  <meta property="og:image" content="https://emilychen1212.github.io/flysheet-2026JOVE/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo-slot" aria-label="Logo 預留位置">Logo</div>
+      <span class="topbar-title" id="topbar-title">JoVE 挑戰 2026</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== 主頁面 ===================== -->
+    <div id="view-home" hidden>
+      <div class="container">
+        <div class="alert" id="not-found" role="alert" hidden>
+          <strong>找不到此學校的活動頁</strong>
+          請確認貴校圖書館公告的連結是否完整。
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">飛資得醫學資訊 × JoVE</p>
+          <h1 class="hero-title" data-bind="campaignName"></h1>
+          <p class="hero-tagline" data-bind="tagline"></p>
+          <p class="period-chip"><span aria-hidden="true">📅</span> 活動期間 <span data-bind="period"></span></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">MISSION</span>兩條任務線，選一條出發</h2>
+          <div class="grid-2">
+            <article class="card mission">
+              <span class="badge">學生</span>
+              <h3>學生挑戰</h3>
+              <p>到 JoVE 實際操作功能，一步步完成指定任務，回報後即可參加抽獎。</p>
+            </article>
+            <article class="card mission mission-teacher">
+              <span class="badge">老師</span>
+              <h3>老師挑戰</h3>
+              <p>申請出版社提供的備課／客製化服務（名額有限），完成即可獲得禮品。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">HOW TO</span>參加方式</h2>
+          <ol class="steps">
+            <li class="step">
+              <span class="step-icon" aria-hidden="true">🔗</span>
+              <span class="step-no">STEP 1</span>
+              <h3>從館方公告進入</h3>
+              <p>點選貴校圖書館公告的專屬活動連結。</p>
+            </li>
+            <li class="step">
+              <span class="step-icon" aria-hidden="true">🎯</span>
+              <span class="step-no">STEP 2</span>
+              <h3>完成任務或申請</h3>
+              <p>學生完成任務並填答，老師申請服務。</p>
+            </li>
+            <li class="step">
+              <span class="step-icon" aria-hidden="true">🎁</span>
+              <span class="step-no">STEP 3</span>
+              <h3>等待抽獎公告</h3>
+              <p>活動結束後公告得獎名單。</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="school-entry">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">ENTRY</span>學校入口</h2>
+          <p class="entry-hint" id="entry-hint">請透過貴校圖書館公告的專屬連結參加活動。</p>
+          <div class="school-list" id="school-list" hidden></div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">FAQ</span>常見問題</h2>
+          <div class="faq" id="faq"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== 學校專屬頁 ===================== -->
+    <div id="view-school" hidden>
+      <section class="hero hero-school" id="school-hero">
+        <div class="container">
+          <div class="logo-pair">
+            <div class="logo-slot logo-slot-light">學校 Logo</div>
+            <span aria-hidden="true">×</span>
+            <div class="logo-slot logo-slot-light">飛資得 Logo</div>
+          </div>
+          <h1 class="hero-title">
+            <span data-bind="schoolName"></span> × 飛資得<br>
+            <span class="hero-sub">JoVE 挑戰</span>
+          </h1>
+          <p class="hero-tagline" data-bind="tagline"></p>
+          <p class="period-chip"><span aria-hidden="true">📅</span> 活動期間 <span data-bind="period"></span></p>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="note" id="school-note" hidden></div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">TOPICS</span>本校訂購主題</h2>
+          <p class="section-desc">點選主題，直接前往 JoVE 對應頁面。</p>
+          <div class="topics" id="topics"></div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="student">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">STUDENT MISSION</span>學生挑戰</h2>
+          <p class="section-desc">依序完成以下任務，最後填答回報即可參加抽獎。</p>
+          <ol class="tasks" id="tasks"></ol>
+          <div class="cta-wrap">
+            <a class="btn btn-primary btn-lg" id="btn-student" target="_blank" rel="noopener">馬上填答</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="teacher">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">TEACHER MISSION</span>老師挑戰</h2>
+          <div class="card">
+            <p data-bind="teacherDesc"></p>
+            <p class="quota"><span aria-hidden="true">⏳</span> <span data-bind="teacherQuota"></span></p>
+          </div>
+          <div class="cta-wrap">
+            <a class="btn btn-secondary btn-lg" id="btn-teacher" target="_blank" rel="noopener">申請服務</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">REWARDS</span>活動禮品</h2>
+          <div class="gifts" id="gifts"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">INFO</span>活動資訊</h2>
+          <dl class="info">
+            <div><dt>活動期間</dt><dd data-bind="period"></dd></div>
+            <div><dt>抽獎方式</dt><dd data-bind="drawMethod"></dd></div>
+            <div><dt>得獎公告</dt><dd data-bind="announcement"></dd></div>
+            <div><dt>活動聲明</dt><dd id="statement"></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 手機底部快捷按鈕 -->
+      <nav class="sticky-cta" aria-label="快速前往">
+        <a href="#student" class="btn btn-primary">學生填答</a>
+        <a href="#teacher" class="btn btn-secondary">老師申請</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p id="footer-org">主辦：飛資得醫學資訊</p>
+      <p class="footer-small">本網站不蒐集任何個人資料；填答與申請皆透過外部表單進行。</p>
+    </div>
+  </footer>
+
+  <noscript><p class="container">請開啟瀏覽器的 JavaScript 以瀏覽活動內容。</p></noscript>
+
+  <script src="data/config.js"></script>
+  <script src="data/schools.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
