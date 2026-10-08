@@ -16,9 +16,16 @@ const CONFIG = {
   // Google 表單預填設定（取得方式見 README）
   // baseUrl 範例："https://docs.google.com/forms/d/e/XXXXXXXX/viewform"
   // schoolEntryId 範例："entry.123456789"
-  // 任一欄空白時，按鈕會顯示「表單準備中」並停用
-  studentForm: { baseUrl: "", schoolEntryId: "" },
-  teacherForm: { baseUrl: "", schoolEntryId: "" },
+  // baseUrl 空白時，按鈕會顯示「表單準備中」並停用
+  // schoolEntryId 空白時，按鈕可用但不會自動帶入校名
+  // embed: true 會把表單直接嵌在頁面中（下方保留「開新視窗填寫」備用按鈕）
+  //   ⚠️ 含「檔案上傳」題的表單必須登入 Google，嵌入時多數手機會顯示空白，建議維持 false
+  studentForm: {
+    baseUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdwxEtJLxvzq3hX94T3xJE9TQYayVdUIMKO6lPjxUx--dDPwQ/viewform",
+    schoolEntryId: "",   // 待提供：校名欄位的 entry ID
+    embed: false
+  },
+  teacherForm: { baseUrl: "", schoolEntryId: "", embed: false },
 
   statementUrl: "",   // 活動聲明（個資與抽獎規則）連結；空白時顯示「準備中」
   announcement: "",   // 得獎公告方式，例如「12/25 於飛資得官網及各校圖書館公告」

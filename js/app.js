@@ -43,15 +43,20 @@
     });
   }
 
-  // Google 表單預填網址；缺任何設定就回傳空字串
-  function formUrl(form, schoolName) {
-    if (!form || !form.baseUrl || !form.schoolEntryId) return "";
+  // Google 表單網址：有 entry ID 就預填校名；embedded 為 true 時產生嵌入用網址
+  function formUrl(form, schoolName, embedded) {
+    if (!form || !form.baseUrl) return "";
     var base = safeUrl(form.baseUrl);
     if (!base) return "";
-    var entry = String(form.schoolEntryId).trim();
-    if (!/^entry\./.test(entry)) entry = "entry." + entry;
-    var sep = base.indexOf("?") === -1 ? "?" : "&";
-    return base + sep + "usp=pp_url&" + encodeURIComponent(entry) + "=" + encodeURIComponent(schoolName);
+    var params = [];
+    if (embedded) params.push("embedded=true");
+    var entry = String(form.schoolEntryId || "").trim();
+    if (entry) {
+      if (!/^entry\./.test(entry)) entry = "entry." + entry;
+      params.push("usp=pp_url", encodeURIComponent(entry) + "=" + encodeURIComponent(schoolName));
+    }
+    if (!params.length) return base;
+    return base + (base.indexOf("?") === -1 ? "?" : "&") + params.join("&");
   }
 
   function setupFormButton(btn, url) {
@@ -64,6 +69,30 @@
     btn.classList.add("is-disabled");
     btn.setAttribute("aria-disabled", "true");
     btn.textContent = "表單準備中";
+  }
+
+  // 嵌入表單；按鈕保留為「開新視窗填寫」備用
+  function setupForm(form, schoolName, embedBox, btn, title) {
+    var url = formUrl(form, schoolName, false);
+    setupFormButton(btn, url);
+    if (!url || !form.embed) return;
+    var iframe = document.createElement("iframe");
+    iframe.src = formUrl(form, schoolName, true);
+    iframe.title = title;
+    iframe.loading = "lazy";
+    embedBox.appendChild(iframe);
+    embedBox.hidden = false;
+    btn.textContent = "表單顯示不完整？點此開新視窗填寫";
+    btn.classList.remove("btn-lg");
+  }
+
+  // LINE 內建瀏覽器無法登入 Google，提示改用外部瀏覽器
+  function setupLineNotice() {
+    if (!/\bLine\//i.test(navigator.userAgent)) return;
+    var params = new URLSearchParams(location.search);
+    params.set("openExternalBrowser", "1");
+    $("#line-open").href = location.pathname + "?" + params.toString();
+    document.getElementById("line-notice").hidden = false;
   }
 
   function renderFaq() {
@@ -151,8 +180,8 @@
       tasks.appendChild(li);
     });
 
-    setupFormButton($("#btn-student"), formUrl(CONFIG.studentForm, s.name));
-    setupFormButton($("#btn-teacher"), formUrl(CONFIG.teacherForm, s.name));
+    setupForm(CONFIG.studentForm, s.name, $("#embed-student"), $("#btn-student"), "學生挑戰填答表單");
+    setupForm(CONFIG.teacherForm, s.name, $("#embed-teacher"), $("#btn-teacher"), "老師服務申請表單");
 
     var ts = CONFIG.teacherService || {};
     bind("teacherDesc", ts.description || "服務內容確認中");
@@ -192,6 +221,7 @@
     bind("campaignName", CONFIG.campaignName);
     bind("tagline", CONFIG.tagline || "");
     bind("period", periodText());
+    setupLineNotice();
 
     var params = new URLSearchParams(location.search);
     var raw = params.get("school");

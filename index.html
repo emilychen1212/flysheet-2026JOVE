@@ -34,6 +34,14 @@
     </div>
   </header>
 
+  <!-- 從 LINE 內建瀏覽器開啟時顯示：Google 不允許在 LINE 內登入，填表前需改用外部瀏覽器 -->
+  <div class="line-notice" id="line-notice" hidden>
+    <div class="container">
+      <p>填寫表單需要登入 Google，LINE 內建瀏覽器無法登入。</p>
+      <a class="btn btn-primary" id="line-open">用手機瀏覽器開啟</a>
+    </div>
+  </div>
+
   <main id="main">
     <!-- ===================== 主頁面 ===================== -->
     <div id="view-home" hidden>
@@ -147,7 +155,9 @@
         <div class="container">
           <h2 class="section-title"><span class="kicker">STUDENT MISSION</span>學生挑戰</h2>
           <p class="section-desc">依序完成以下任務，最後填答回報即可參加抽獎。</p>
+          <p class="form-hint">📎 填答時需上傳任務截圖，請先登入 Google 帳號（學校或個人帳號皆可）。</p>
           <ol class="tasks" id="tasks"></ol>
+          <div class="form-embed" id="embed-student" hidden></div>
           <div class="cta-wrap">
             <a class="btn btn-primary btn-lg" id="btn-student" target="_blank" rel="noopener">馬上填答</a>
           </div>
@@ -161,6 +171,7 @@
             <p data-bind="teacherDesc"></p>
             <p class="quota"><span aria-hidden="true">⏳</span> <span data-bind="teacherQuota"></span></p>
           </div>
+          <div class="form-embed" id="embed-teacher" hidden></div>
           <div class="cta-wrap">
             <a class="btn btn-secondary btn-lg" id="btn-teacher" target="_blank" rel="noopener">申請服務</a>
           </div>

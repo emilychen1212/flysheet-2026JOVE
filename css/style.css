@@ -206,6 +206,21 @@ a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: v
 .cta-wrap { margin-top: 20px; }
 .btn:focus-visible, a.topic:focus-visible, summary:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px; }
 
+/* ===== 嵌入表單／提示 ===== */
+.form-hint {
+  margin: -6px 0 18px; padding: 10px 14px; border-radius: 10px;
+  background: #fff; border: 1px dashed var(--line); font-size: 14px; color: var(--muted);
+}
+.form-embed {
+  margin-top: 20px; background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+}
+.form-embed iframe { display: block; width: 100%; height: 80vh; min-height: 560px; border: 0; }
+.form-fallback { margin-top: 10px; font-size: 14px; text-align: center; color: var(--muted); }
+.line-notice { background: #fff6e6; border-bottom: 1px solid #f2c97a; padding: 12px 0; font-size: 14px; }
+.line-notice .container { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; }
+.line-notice .btn { min-height: 44px; font-size: 15px; }
+
 /* ===== 禮品 ===== */
 .gifts { display: grid; gap: 10px; }
 .gift {
