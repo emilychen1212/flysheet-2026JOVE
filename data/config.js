@@ -22,7 +22,7 @@ const CONFIG = {
   //   ⚠️ 含「檔案上傳」題的表單必須登入 Google，嵌入時多數手機會顯示空白，建議維持 false
   studentForm: {
     baseUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdwxEtJLxvzq3hX94T3xJE9TQYayVdUIMKO6lPjxUx--dDPwQ/viewform",
-    schoolEntryId: "",   // 待提供：校名欄位的 entry ID
+    schoolEntryId: "entry.967330370",   // 「學校名稱」題
     embed: false
   },
   teacherForm: { baseUrl: "", schoolEntryId: "", embed: false },
