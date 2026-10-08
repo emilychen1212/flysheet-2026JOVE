@@ -151,6 +151,12 @@ section[id] { scroll-margin-top: 64px; }
 .faq-item p { padding: 0 16px 16px; color: var(--muted); }
 
 /* ===== 主題卡片 ===== */
+.topic-groups { display: grid; gap: 22px; }
+.topic-group-title {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 15px; font-weight: 700; color: var(--brand); margin-bottom: 10px;
+}
+.topic-group-title .pending { margin-left: 0; }
 .topics { display: grid; gap: 10px; }
 .topic {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;

@@ -15,9 +15,11 @@ css/style.css       樣式（手機優先）
 js/app.js           頁面邏輯（一般不需要改）
 data/config.js      活動共用設定：期間、表單、學生任務、FAQ…
 data/schools.js     各校資料
+data/topics.js      JoVE 全主題清單（由 Excel 自動產生）
 assets/og-image.png LINE 分享預覽圖（1200×630）
 assets/logos/       Logo 素材放這裡
 tools/list-links.js 列出所有學校連結的小腳本（只在本機執行）
+tools/build-topics.py 從 Excel 產生 data/topics.js
 ```
 
 > **平常只需要改 `data/config.js` 和 `data/schools.js` 這兩個檔案。**
@@ -35,15 +37,34 @@ tools/list-links.js 列出所有學校連結的小腳本（只在本機執行）
     active: true,               // false = 暫停，連結會顯示「找不到此學校」
     themeColor: "#7a1f3d",      // 主題色，留空 "" 用預設深藍
     bannerImage: "",            // 例如 "assets/banners/kmu.jpg"，留空用預設漸層
-    topics: [
-      { name: "JoVE Core：生物學", url: "https://www.jove.com/..." }
-    ],
+    topics: ["core-biology", "journal-medicine"],   // 主題代碼，對照 data/topics.js
     gifts: [
       { tier: "頭獎", item: "AirPods", qty: 1 },
       { tier: "參與獎", item: "超商禮券 100 元", qty: 20 }
     ],
     note: ""                    // 該校專屬說明，留空就不顯示
   }
+```
+
+**訂購主題怎麼填**
+
+`topics` 只要填主題代碼，網站會自動帶出名稱、依產品分組，並連到 JoVE 對應頁面。代碼規則是「產品代碼-Title」：
+
+| 產品 | 代碼開頭 | 範例 |
+| --- | --- | --- |
+| Journal | `journal-` | `journal-immunology-and-infection` |
+| Encyclopedia of Experiments | `eoe-` | `eoe-microbiology` |
+| Science Education | `se-` | `se-basic-biology` |
+| Core | `core-` | `core-calculus` |
+| Lab Manual | `lab-` | `lab-biology` |
+| Business | `business-` | `business-finance` |
+
+完整清單在 `data/topics.js`。代碼打錯時，該主題不會顯示（瀏覽器的開發者工具 Console 會出現提示）。
+
+**JoVE 主題清單或網址有更新時**，更新 Excel 後執行以下指令重新產生 `data/topics.js`（需要 `pip3 install openpyxl`）：
+
+```bash
+python3 tools/build-topics.py "/Users/飛資得醫學/01_產品相關資料/2026JoVE全主題_含網址.xlsx"
 ```
 
 **注意事項**

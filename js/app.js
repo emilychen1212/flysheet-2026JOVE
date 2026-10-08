@@ -129,6 +129,43 @@
     renderFaq();
   }
 
+  // 訂購主題：依 topics.js 的產品分組，每張卡片連到 JoVE 對應頁面
+  function renderTopics(s) {
+    var box = $("#topics");
+    var groups = [], byProduct = {};
+    (s.topics || []).forEach(function (code) {
+      var t = TOPICS[code];
+      if (!t) {
+        console.warn("schools.js 主題代碼不存在：" + code + "（請對照 data/topics.js）");
+        return;
+      }
+      if (!byProduct[t.product]) {
+        byProduct[t.product] = [];
+        groups.push(t.product);
+      }
+      byProduct[t.product].push(t);
+    });
+
+    groups.forEach(function (product) {
+      var group = el("div", "topic-group");
+      var head = el("h3", "topic-group-title", "JoVE " + product);
+      if (s.topicsPending) head.appendChild(pendingTag());
+      group.appendChild(head);
+      var list = el("div", "topics");
+      byProduct[product].forEach(function (t) {
+        var url = safeUrl(t.url);
+        var card = el(url ? "a" : "div", "topic");
+        if (url) { card.href = url; card.target = "_blank"; card.rel = "noopener"; }
+        card.appendChild(el("span", "topic-name", t.title));
+        if (url) card.appendChild(el("span", "topic-arrow", "→"));
+        list.appendChild(card);
+      });
+      group.appendChild(list);
+      box.appendChild(group);
+    });
+    if (!groups.length) box.appendChild(el("p", "muted", "主題確認中"));
+  }
+
   function renderSchool(key, s) {
     document.getElementById("view-school").hidden = false;
     document.body.classList.add("is-school");
@@ -154,18 +191,7 @@
       note.hidden = false;
     }
 
-    // 訂購主題
-    var topics = $("#topics");
-    (s.topics || []).forEach(function (t) {
-      var url = safeUrl(t.url);
-      var card = el(url ? "a" : "div", "topic");
-      if (url) { card.href = url; card.target = "_blank"; card.rel = "noopener"; }
-      card.appendChild(el("span", "topic-name", t.name));
-      if (t.pending) card.appendChild(pendingTag());
-      if (url) card.appendChild(el("span", "topic-arrow", "→"));
-      topics.appendChild(card);
-    });
-    if (!topics.children.length) topics.appendChild(el("p", "muted", "主題確認中"));
+    renderTopics(s);
 
     // 學生任務
     var tasks = $("#tasks");
