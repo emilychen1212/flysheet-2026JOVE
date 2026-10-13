@@ -32,7 +32,7 @@
   function periodText() {
     var p = CONFIG.period || {};
     var start = fmtDate(p.start), end = fmtDate(p.end);
-    if (start && end) return start + " – " + end;
+    if (start && end) return start + " - " + end;
     if (start) return start + " 起（結束日確認中）";
     return "2026 年 11 月初起（日期確認中）";
   }
@@ -204,7 +204,7 @@
     document.getElementById("view-school").hidden = false;
     document.body.classList.add("is-school");
     document.title = s.name + " × 飛資得｜" + CONFIG.campaignName;
-    $("#topbar-title").textContent = s.name + " × 飛資得";
+    $("#topbar-title").textContent = s.name + " × " + CONFIG.organizer;
 
     if (s.themeColor && /^#[0-9a-f]{3,8}$/i.test(s.themeColor)) {
       document.documentElement.style.setProperty("--brand", s.themeColor);
@@ -284,8 +284,11 @@
       st.textContent = "活動聲明準備中";
     }
 
-    var host = s.hostName ? s.name + s.hostName : s.name;
-    $("#footer-org").textContent = "主辦／協辦：" + host + " × " + CONFIG.organizer;
+    var notices = $("#notices");
+    if (notices) {
+      (CONFIG.notices || []).forEach(function (n) { notices.appendChild(el("li", null, n)); });
+      if (!notices.children.length) notices.closest("section").hidden = true;
+    }
   }
 
   function init() {

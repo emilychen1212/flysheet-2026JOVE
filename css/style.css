@@ -41,8 +41,8 @@ section[id] { scroll-margin-top: 64px; }
 
 /* ===== 頂部列 ===== */
 .topbar { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
-.topbar-inner { display: flex; align-items: center; gap: 12px; height: 56px; }
-.topbar-title { font-weight: 700; font-size: 15px; color: var(--brand); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.topbar-inner { display: flex; align-items: center; gap: 12px; min-height: 56px; padding-top: 6px; padding-bottom: 6px; }
+.topbar-title { font-weight: 700; font-size: 15px; line-height: 1.35; color: var(--brand); }
 
 /* Logo 預留位置：拿到素材後換成 <img> */
 .logo-slot {
@@ -55,7 +55,11 @@ section[id] { scroll-margin-top: 64px; }
 .logo-slot-light { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.8); }
 .logo-pair { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; color: rgba(255,255,255,.7); }
 .topbar-logo { height: 20px; width: auto; flex: none; }
-@media (max-width: 400px) { .topbar-title { font-size: 13px; } }
+@media (max-width: 480px) {
+  .topbar-title { font-size: 13px; }
+  .topic { min-height: 40px; padding: 6px 13px; font-size: 14px; gap: 6px; }
+  .topics { gap: 8px; }
+}
 
 /* Logo 白底小卡：不同底色、白底 JPG 的 logo 放在一起也整齊 */
 .logo-chip {
@@ -74,7 +78,7 @@ section[id] { scroll-margin-top: 64px; }
 }
 .hero-school.has-banner::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(255,255,255,.78), rgba(255,255,255,.25) 70%, transparent);
+  background: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6));
 }
 .hero-school.has-banner .container { position: relative; }
 .hero-school.has-banner .logo-pair { justify-content: center; flex-wrap: nowrap; }
@@ -181,18 +185,21 @@ section[id] { scroll-margin-top: 64px; }
 .faq-item p { padding: 0 16px 16px; color: var(--muted); }
 
 /* ===== 主題卡片 ===== */
-.topic-groups { display: grid; gap: 22px; }
+.topic-groups { display: flex; flex-wrap: wrap; column-gap: 36px; row-gap: 20px; }
+.topic-groups > .topic-group { flex: 0 1 auto; max-width: 100%; }
+.topic-groups.is-collapsed { display: grid; }
 .topic-group-title {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   font-size: 15px; font-weight: 700; color: var(--brand); margin-bottom: 10px;
 }
 .topic-group-title .pending { margin-left: 0; }
-.topics { display: grid; gap: 10px; }
+.topics { display: flex; flex-wrap: wrap; gap: 10px; }
 .topic-summary {
   padding: 12px 16px; border-radius: 12px; background: var(--brand-soft);
   color: var(--brand); font-weight: 700;
 }
 .topic-groups.is-collapsed { gap: 10px; }
+.topic-groups.is-collapsed > .topic-group { flex: none; }
 .topic-dropdown { background: #fff; border: 1.5px solid var(--line); border-radius: 12px; }
 .topic-dropdown[open] { border-color: var(--brand); }
 .topic-dropdown-head {
@@ -212,20 +219,34 @@ section[id] { scroll-margin-top: 64px; }
 .topic-dropdown .topics { padding: 0 12px 12px; }
 .topic {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  min-height: 56px; padding: 14px 16px;
-  background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+  min-height: 44px; padding: 8px 16px;
+  background: #fff; border: 1.5px solid var(--line); border-radius: 999px;
+  font-size: 15px; box-shadow: 0 1px 4px rgba(11, 61, 92, .06);
   text-decoration: none; color: var(--ink); font-weight: 500;
   transition: border-color .15s, box-shadow .15s;
 }
 a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: var(--shadow); }
-.topic-name { flex: 1 1 60%; }
+.topic-name { flex: none; }
 .topic .pending { margin-left: 0; }
-.topic-arrow { color: var(--brand); font-weight: 700; margin-left: auto; }
+.topic-arrow { color: var(--accent); font-weight: 700; font-size: 14px; }
 .pending {
   display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 6px;
   font-size: 12px; font-weight: 700; line-height: 22px;
   background: #fff1cc; color: #8a5300; border: 1px solid #f2c97a;
 }
+
+/* 主題按鈕輕輕漂浮：每顆節奏不同，滑過時停下並浮起；系統設定「減少動態效果」時不播放 */
+@keyframes topic-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-3px) rotate(-.6deg); }
+  70% { transform: translateY(1px) rotate(.5deg); }
+}
+.topic { animation: topic-float 5s ease-in-out infinite; transition: border-color .15s, box-shadow .15s, transform .15s; }
+.topic:nth-child(3n+1) { animation-duration: 4.6s; animation-delay: -1.2s; }
+.topic:nth-child(3n+2) { animation-duration: 5.4s; animation-delay: -2.7s; }
+.topic:nth-child(4n+3) { animation-duration: 6s; animation-delay: -.6s; }
+a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .topic { animation: none; } }
 
 /* ===== 任務 ===== */
 .tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -263,6 +284,25 @@ a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: v
 .btn.is-disabled { background: #cfd7df; color: #5c6b7a; border-color: transparent; cursor: not-allowed; pointer-events: none; }
 .cta-wrap { margin-top: 20px; }
 .btn:focus-visible, a.topic:focus-visible, summary:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px; }
+
+/* ===== 頁首右側禮品欄 ===== */
+.hero-split { display: grid; gap: 24px; }
+.gift-panel {
+  text-align: left; background: rgba(255,255,255,.94); border-radius: var(--radius);
+  border-top: 5px solid var(--highlight); padding: 18px; box-shadow: 0 6px 24px rgba(11, 61, 92, .12);
+}
+.gift-panel-title { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 12px; }
+.gift-panel .gifts { gap: 8px; }
+.gift-panel .gift { padding: 10px 12px; gap: 10px; }
+.gift-panel .gift-tier { font-size: 13px; min-width: 4.4em; text-align: center; }
+
+/* ===== 活動注意事項 ===== */
+.notices {
+  margin: 0; padding: 18px 18px 18px 38px; background: #fff;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  display: grid; gap: 10px; font-size: 15px; color: var(--ink);
+}
+.notices li::marker { color: var(--accent); }
 
 /* ===== 嵌入表單／提示 ===== */
 .form-hint {
@@ -302,6 +342,9 @@ a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: v
 /* ===== 頁尾 ===== */
 .footer { background: #0a2233; color: #c9d6e2; padding: 28px 0; font-size: 14px; text-align: center; }
 .footer-small { font-size: 12px; opacity: .7; margin-top: 6px; }
+.footer a { color: #9fe3dc; text-decoration: none; white-space: nowrap; }
+.footer a:hover { text-decoration: underline; }
+.footer-sep { margin: 0 6px; opacity: .6; }
 .is-school .footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 
 /* ===== 手機底部快捷按鈕 ===== */
@@ -321,7 +364,6 @@ a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: v
   .steps { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .step { padding: 24px; text-align: center; }
   .step-icon { position: static; margin: 0 auto 10px; width: 56px; height: 56px; font-size: 26px; }
-  .topics { grid-template-columns: repeat(2, 1fr); }
   .school-list { grid-template-columns: repeat(3, 1fr); }
   .btn-lg { width: auto; min-width: 280px; }
   .cta-wrap { text-align: center; }
@@ -336,14 +378,16 @@ a.topic:hover, a.topic:focus-visible { border-color: var(--brand); box-shadow: v
 
 /* ===== 電腦（寬螢幕）：內容拉寬，卡片多欄排列，減少換行 ===== */
 @media (min-width: 1024px) {
+  .hero-split { grid-template-columns: minmax(0, 1fr) minmax(320px, 36%); align-items: center; gap: 40px; }
+  .hero-school.has-banner { text-align: left; }
+  .hero-school.has-banner .logo-pair { justify-content: flex-start; }
+  .gift-panel { padding: 22px; }
   body { font-size: 17px; }
   .container { padding: 0 32px; }
   .hero-school.has-banner { padding: 104px 0 112px; }
   .logo-chip { height: 72px; }
-  .topics { grid-template-columns: repeat(3, 1fr); }
   .tasks { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .task { flex-direction: column; }
-  .gifts { grid-template-columns: repeat(3, 1fr); }
   .school-list { grid-template-columns: repeat(4, 1fr); }
   .faq { grid-template-columns: 1fr 1fr; align-items: start; }
   .info { grid-template-columns: 1fr 1fr; }

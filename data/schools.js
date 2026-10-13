@@ -34,7 +34,9 @@ const SCHOOLS = {
     topicsPending: true,
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
       { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
@@ -59,7 +61,10 @@ const SCHOOLS = {
     ],
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 15, pending: true }
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
   },
@@ -76,6 +81,8 @@ const SCHOOLS = {
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
       { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
       { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
@@ -91,7 +98,10 @@ const SCHOOLS = {
     topics: ["core-calculus"],
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
   },
@@ -117,7 +127,10 @@ const SCHOOLS = {
     ],
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
   },
@@ -146,7 +159,10 @@ const SCHOOLS = {
     ],
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
   },
@@ -163,7 +179,10 @@ const SCHOOLS = {
     topicsSummary: "本校訂購 JoVE Unlimited：Research 與 Education 全部主題",
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
+      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
+      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
     ],
     note: ""
   }

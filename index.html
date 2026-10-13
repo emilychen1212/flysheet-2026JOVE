@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261013">
+  <link rel="stylesheet" href="css/style.css?v=20261014">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -124,18 +124,25 @@
     <!-- ===================== 學校專屬頁 ===================== -->
     <div id="view-school" hidden>
       <section class="hero hero-school" id="school-hero">
-        <div class="container">
-          <div class="logo-pair">
-            <span class="logo-chip" id="school-logo" hidden></span>
-            <span class="logo-x" id="logo-x" aria-hidden="true" hidden>×</span>
-            <span class="logo-chip"><img src="assets/img/logo-flysheet.png" alt="飛資得醫學資訊"></span>
+        <div class="container hero-split">
+          <div class="hero-main">
+            <div class="logo-pair">
+              <span class="logo-chip" id="school-logo" hidden></span>
+              <span class="logo-x" id="logo-x" aria-hidden="true" hidden>×</span>
+              <span class="logo-chip"><img src="assets/img/logo-flysheet.png" alt="飛資得醫學資訊"></span>
+            </div>
+            <h1 class="hero-title">
+              <span data-bind="schoolName"></span> <span class="nowrap">× 飛資得</span><br>
+              <span class="hero-sub">JoVE 挑戰</span>
+            </h1>
+            <p class="hero-tagline" data-bind="tagline"></p>
+            <p class="period-chip"><span aria-hidden="true">📅</span> 活動期間 <span data-bind="period"></span></p>
           </div>
-          <h1 class="hero-title">
-            <span data-bind="schoolName"></span> <span class="nowrap">× 飛資得</span><br>
-            <span class="hero-sub">JoVE 挑戰</span>
-          </h1>
-          <p class="hero-tagline" data-bind="tagline"></p>
-          <p class="period-chip"><span aria-hidden="true">📅</span> 活動期間 <span data-bind="period"></span></p>
+
+          <aside class="gift-panel" aria-labelledby="gift-title">
+            <h2 class="gift-panel-title" id="gift-title"><span aria-hidden="true">🎁</span> 活動禮品</h2>
+            <div class="gifts" id="gifts"></div>
+          </aside>
         </div>
       </section>
 
@@ -178,13 +185,6 @@
         </div>
       </section>
 
-      <section class="section section-alt">
-        <div class="container">
-          <h2 class="section-title"><span class="kicker">REWARDS</span>活動禮品</h2>
-          <div class="gifts" id="gifts"></div>
-        </div>
-      </section>
-
       <section class="section">
         <div class="container">
           <h2 class="section-title"><span class="kicker">INFO</span>活動資訊</h2>
@@ -194,6 +194,13 @@
             <div><dt>得獎公告</dt><dd data-bind="announcement"></dd></div>
             <div><dt>活動聲明</dt><dd id="statement"></dd></div>
           </dl>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2 class="section-title"><span class="kicker">NOTICE</span>活動注意事項</h2>
+          <ul class="notices" id="notices"></ul>
         </div>
       </section>
 
@@ -207,16 +214,16 @@
 
   <footer class="footer">
     <div class="container">
-      <p id="footer-org">主辦：飛資得醫學資訊</p>
+      <p id="footer-org">主辦單位：飛資得醫學資訊股份有限公司<span class="footer-sep">｜</span>活動聯繫窗口：<a href="tel:+886226582223">(02)2658-2223</a></p>
       <p class="footer-small">本網站不蒐集任何個人資料；填答與申請皆透過外部表單進行。</p>
     </div>
   </footer>
 
   <noscript><p class="container">請開啟瀏覽器的 JavaScript 以瀏覽活動內容。</p></noscript>
 
-  <script src="data/config.js?v=20261013"></script>
-  <script src="data/topics.js?v=20261013"></script>
-  <script src="data/schools.js?v=20261013"></script>
-  <script src="js/app.js?v=20261013"></script>
+  <script src="data/config.js?v=20261014"></script>
+  <script src="data/topics.js?v=20261014"></script>
+  <script src="data/schools.js?v=20261014"></script>
+  <script src="js/app.js?v=20261014"></script>
 </body>
 </html>
