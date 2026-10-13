@@ -3,7 +3,7 @@
 飛資得醫學資訊 JoVE 跨校推廣活動入口。純 HTML／CSS／JavaScript，不需要建置，直接部署在 GitHub Pages。
 
 - 主頁面：`https://emilychen1212.github.io/flysheet-2026JOVE/`
-- 學校專屬頁：`https://emilychen1212.github.io/flysheet-2026JOVE/?school=mmc`
+- 學校專屬頁：`https://emilychen1212.github.io/flysheet-2026JOVE/?school=mmu`
 
 網站本身不收任何資料，填答與申請都連到 Google 表單；沒有追蹤碼，也不使用 localStorage。
 
@@ -97,7 +97,7 @@ python3 tools/build-topics.py "/Users/飛資得醫學/01_產品相關資料/2026
 
 ## 三、本機預覽
 
-方法 A（最簡單）：直接雙擊 `index.html` 用瀏覽器開啟。網址後面手動加上 `?school=mmc` 就能看學校頁。
+方法 A（最簡單）：直接雙擊 `index.html` 用瀏覽器開啟。網址後面手動加上 `?school=mmu` 就能看學校頁。
 
 方法 B（較接近正式環境）：在這個資料夾開終端機執行
 
@@ -105,7 +105,7 @@ python3 tools/build-topics.py "/Users/飛資得醫學/01_產品相關資料/2026
 python3 -m http.server 8000
 ```
 
-然後在瀏覽器開啟 `http://localhost:8000/?school=mmc`。
+然後在瀏覽器開啟 `http://localhost:8000/?school=mmu`。
 
 ## 四、列出所有學校的專屬連結
 

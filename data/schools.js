@@ -1,6 +1,6 @@
 /**
  * 各校資料
- * 物件的 key（例如 mmc）就是網址參數：?school=mmc
+ * 物件的 key（例如 mmu）就是網址參數：?school=mmu
  * key 請用小寫英文或數字，不要有空白。
  *
  * 欄位說明：
@@ -8,7 +8,7 @@
  *   hostName      館方名稱，例如「圖書館」「圖書資訊處」
  *   active        true 才會開放；false 時連結會顯示「找不到此學校」
  *   themeColor    主題色（例如 "#7a1f3d"），空白用預設色
- *   bannerImage   banner 圖路徑（例如 "assets/banners/mmc.jpg"），空白用預設漸層
+ *   bannerImage   banner 圖路徑（例如 "assets/banners/mmu.jpg"），空白用預設漸層
  *   topics        訂購主題代碼清單，代碼對照見 data/topics.js
  *                 例如 "journal-biology"、"se-basic-biology"、"core-calculus"
  *   topicsPending true → 主題區顯示「待確認」（訂購內容確認後刪除這行）
@@ -18,7 +18,7 @@
  * pending: true → 顯示黃色「待確認」標籤，確認後刪除這行即可。
  */
 const SCHOOLS = {
-  mmc: {
+  mmu: {
     name: "馬偕醫學大學",
     hostName: "圖書館",
     active: true,
@@ -34,8 +34,8 @@ const SCHOOLS = {
     note: ""
   },
 
-  ndmc: {
-    name: "國防醫學院",
+  ndmu: {
+    name: "國防醫學大學",
     hostName: "圖書館",
     active: true,
     themeColor: "",
