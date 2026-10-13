@@ -129,40 +129,74 @@
     renderFaq();
   }
 
-  // 訂購主題：依 topics.js 的產品分組，每張卡片連到 JoVE 對應頁面
+  // 主題數超過這個數量時，各產品改成折疊選單（可用 schools.js 的 topicsCollapsed 覆寫）
+  var COLLAPSE_THRESHOLD = 15;
+
+  // 展開主題代碼："module:Research" 代表該模組全部主題；依 topics.js 的順序排列並去重
+  function resolveTopics(codes) {
+    var wanted = {};
+    (codes || []).forEach(function (code) {
+      var m = /^module:(.+)$/i.exec(code);
+      if (m) {
+        var found = false;
+        Object.keys(TOPICS).forEach(function (k) {
+          if (TOPICS[k].module.toLowerCase() === m[1].toLowerCase()) { wanted[k] = true; found = true; }
+        });
+        if (!found) console.warn("schools.js 模組不存在：" + code);
+      } else if (TOPICS[code]) {
+        wanted[code] = true;
+      } else {
+        console.warn("schools.js 主題代碼不存在：" + code + "（請對照 data/topics.js）");
+      }
+    });
+    return Object.keys(TOPICS).filter(function (k) { return wanted[k]; }).map(function (k) { return TOPICS[k]; });
+  }
+
+  function topicCard(t) {
+    var url = safeUrl(t.url);
+    var card = el(url ? "a" : "div", "topic");
+    if (url) { card.href = url; card.target = "_blank"; card.rel = "noopener"; }
+    card.appendChild(el("span", "topic-name", t.title));
+    if (url) card.appendChild(el("span", "topic-arrow", "→"));
+    return card;
+  }
+
+  // 訂購主題：依產品分組，每張卡片連到 JoVE 對應頁面；主題多時每個產品折疊成下拉選單
   function renderTopics(s) {
     var box = $("#topics");
+    var topics = resolveTopics(s.topics);
     var groups = [], byProduct = {};
-    (s.topics || []).forEach(function (code) {
-      var t = TOPICS[code];
-      if (!t) {
-        console.warn("schools.js 主題代碼不存在：" + code + "（請對照 data/topics.js）");
-        return;
-      }
-      if (!byProduct[t.product]) {
-        byProduct[t.product] = [];
-        groups.push(t.product);
-      }
+    topics.forEach(function (t) {
+      if (!byProduct[t.product]) { byProduct[t.product] = []; groups.push(t.product); }
       byProduct[t.product].push(t);
     });
+    var collapse = typeof s.topicsCollapsed === "boolean" ? s.topicsCollapsed : topics.length > COLLAPSE_THRESHOLD;
+
+    if (s.topicsSummary) box.appendChild(el("p", "topic-summary", s.topicsSummary));
 
     groups.forEach(function (product) {
-      var group = el("div", "topic-group");
-      var head = el("h3", "topic-group-title", "JoVE " + product);
-      if (s.topicsPending) head.appendChild(pendingTag());
-      group.appendChild(head);
       var list = el("div", "topics");
-      byProduct[product].forEach(function (t) {
-        var url = safeUrl(t.url);
-        var card = el(url ? "a" : "div", "topic");
-        if (url) { card.href = url; card.target = "_blank"; card.rel = "noopener"; }
-        card.appendChild(el("span", "topic-name", t.title));
-        if (url) card.appendChild(el("span", "topic-arrow", "→"));
-        list.appendChild(card);
-      });
-      group.appendChild(list);
-      box.appendChild(group);
+      byProduct[product].forEach(function (t) { list.appendChild(topicCard(t)); });
+
+      if (collapse) {
+        var d = el("details", "topic-group topic-dropdown");
+        var sum = el("summary", "topic-dropdown-head");
+        sum.appendChild(el("span", "topic-dropdown-name", "JoVE " + product));
+        sum.appendChild(el("span", "topic-count", byProduct[product].length + " 個主題"));
+        if (s.topicsPending) sum.appendChild(pendingTag());
+        d.appendChild(sum);
+        d.appendChild(list);
+        box.appendChild(d);
+      } else {
+        var group = el("div", "topic-group");
+        var head = el("h3", "topic-group-title", "JoVE " + product);
+        if (s.topicsPending) head.appendChild(pendingTag());
+        group.appendChild(head);
+        group.appendChild(list);
+        box.appendChild(group);
+      }
     });
+    if (collapse && groups.length) box.classList.add("is-collapsed");
     if (!groups.length) box.appendChild(el("p", "muted", "主題確認中"));
   }
 

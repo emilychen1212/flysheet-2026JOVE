@@ -11,7 +11,11 @@
  *   bannerImage   banner 圖路徑（例如 "assets/banners/mmu.jpg"），空白用預設漸層
  *   topics        訂購主題代碼清單，代碼對照見 data/topics.js
  *                 例如 "journal-biology"、"se-basic-biology"、"core-calculus"
+ *                 "module:Research" / "module:Education" = 該模組全部主題（Unlimited 客戶用）
  *   topicsPending true → 主題區顯示「待確認」（訂購內容確認後刪除這行）
+ *   topicsSummary 主題區上方的一句說明（選填），例如「本校訂購 JoVE Unlimited…」
+ *   topicsCollapsed 主題超過 15 個時，各產品自動折疊成下拉選單；
+ *                 填 true／false 可強制開啟／關閉折疊（選填）
  *   gifts         禮品 [{ tier, item, qty, pending }]
  *   note          該校專屬說明（選填）
  *
@@ -105,6 +109,50 @@ const SCHOOLS = {
       "journal-chemistry",
       "se-basic-biology"
     ],
+    gifts: [
+      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+    ],
+    note: ""
+  },
+
+  nthu: {
+    name: "清華大學",
+    hostName: "圖書館",
+    active: true,
+    themeColor: "",
+    bannerImage: "",
+    topics: [
+      "se-advanced-biology",
+      "se-basic-biology",
+      "core-biology",
+      "core-cell-biology",
+      "core-molecular-biology",
+      "core-statistics",
+      "lab-biology",
+      "journal-biochemistry",
+      "journal-biology",
+      "journal-developmental-biology",
+      "journal-genetics",
+      "journal-neuroscience",
+      "eoe-biology"
+    ],
+    gifts: [
+      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
+      { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
+    ],
+    note: ""
+  },
+
+  nycu: {
+    name: "陽明交通大學",
+    hostName: "圖書館",
+    active: true,
+    themeColor: "",
+    bannerImage: "",
+    // Unlimited：Research＋Education 全部主題（"module:模組名稱" = 該模組所有主題）
+    topics: ["module:Research", "module:Education"],
+    topicsSummary: "本校訂購 JoVE Unlimited：Research 與 Education 全部主題",
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
       { tier: "參與獎", item: "禮品待確認", qty: 10, pending: true }
