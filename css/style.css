@@ -30,7 +30,7 @@ a { color: var(--brand); }
 h1, h2, h3 { line-height: 1.35; margin: 0; }
 p { margin: 0; }
 [hidden] { display: none !important; }
-section[id] { scroll-margin-top: 64px; }
+section[id] { scroll-margin-top: 84px; }
 
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .muted { color: var(--muted); }
@@ -296,6 +296,48 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 .gift-panel .gift { padding: 10px 12px; gap: 10px; }
 .gift-panel .gift-tier { font-size: 13px; min-width: 4.4em; text-align: center; }
 
+/* 頁首快速跳轉按鈕：只在電腦／平板顯示（手機用底部固定按鈕） */
+.hero-actions { display: none; }
+@media (min-width: 720px) {
+  .hero-actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .hero-school.has-banner .hero-actions { justify-content: center; }
+  .hero-actions .btn { min-width: 150px; min-height: 50px; box-shadow: 0 4px 14px rgba(11, 61, 92, .18); }
+}
+@media (min-width: 1024px) { .hero-school.has-banner .hero-actions { justify-content: flex-start; } }
+
+/* 任務：情境＋回報內容 */
+.task-body .chip { margin: 0 0 6px; }
+.task-scene { font-size: 15px; color: var(--ink); }
+.task-submit {
+  margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: var(--bg-alt);
+  font-size: 14px; color: var(--ink);
+}
+.task-submit strong { color: var(--brand); }
+
+/* ===== 動態效果（系統設定「減少動態效果」時全部關閉） ===== */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* 頭獎一列：一道光澤每隔幾秒掃過 */
+.gift-top { position: relative; overflow: hidden; border-color: #f2c97a; background: #fffaf0; }
+.gift-top::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.85), transparent);
+  animation: gift-shine 4.5s ease-in-out infinite; pointer-events: none;
+}
+@keyframes gift-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+
+/* 馬上填答：緩慢呼吸光暈 */
+.btn-glow { animation: btn-breathe 2.6s ease-in-out infinite; }
+@keyframes btn-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18, 163, 154, .45); }
+  50% { box-shadow: 0 0 0 10px rgba(18, 163, 154, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .gift-top::after, .btn-glow { animation: none; }
+}
+
 /* ===== 活動注意事項 ===== */
 .notices {
   margin: 0; padding: 18px 18px 18px 38px; background: #fff;
@@ -394,5 +436,5 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   .info > div { grid-template-columns: 110px 1fr; border-right: 1px solid var(--line); }
   .info > div:nth-child(2n) { border-right: 0; }
   .info > div:nth-last-child(-n+2) { border-bottom: 0; }
-  .section-desc, .card p { max-width: 75ch; }
+  .card p { max-width: 75ch; }
 }

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261014">
+  <link rel="stylesheet" href="css/style.css?v=20261015">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -137,6 +137,11 @@
             </h1>
             <p class="hero-tagline" data-bind="tagline"></p>
             <p class="period-chip"><span aria-hidden="true">📅</span> 活動期間 <span data-bind="period"></span></p>
+            <!-- 電腦版快速跳轉（手機版用底部固定按鈕） -->
+            <div class="hero-actions">
+              <a href="#student" class="btn btn-primary">學生挑戰 ↓</a>
+              <a href="#teacher" class="btn btn-secondary">老師挑戰 ↓</a>
+            </div>
           </div>
 
           <aside class="gift-panel" aria-labelledby="gift-title">
@@ -161,7 +166,7 @@
       <section class="section section-alt" id="student">
         <div class="container">
           <h2 class="section-title"><span class="kicker">STUDENT MISSION</span>學生挑戰</h2>
-          <p class="section-desc">依序完成以下任務，最後填答回報即可參加抽獎。</p>
+          <p class="section-desc">身為學生，JoVE 可以怎麼幫你學習？跟著三個任務親身體驗一次，最後填答回報即可參加抽獎。</p>
           <p class="form-hint">📎 填答時需上傳任務截圖，請先登入 Google 帳號（學校或個人帳號皆可）。</p>
           <ol class="tasks" id="tasks"></ol>
           <div class="form-embed" id="embed-student" hidden></div>
@@ -221,9 +226,9 @@
 
   <noscript><p class="container">請開啟瀏覽器的 JavaScript 以瀏覽活動內容。</p></noscript>
 
-  <script src="data/config.js?v=20261014"></script>
-  <script src="data/topics.js?v=20261014"></script>
-  <script src="data/schools.js?v=20261014"></script>
-  <script src="js/app.js?v=20261014"></script>
+  <script src="data/config.js?v=20261015"></script>
+  <script src="data/topics.js?v=20261015"></script>
+  <script src="data/schools.js?v=20261015"></script>
+  <script src="js/app.js?v=20261015"></script>
 </body>
 </html>

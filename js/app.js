@@ -245,13 +245,20 @@
       li.appendChild(el("span", "task-no", String(i + 1).padStart(2, "0")));
       var body = el("div", "task-body");
       body.appendChild(el("h3", null, t.title));
-      body.appendChild(el("p", null, t.description));
       if (t.feature) body.appendChild(el("span", "chip", "使用功能：" + t.feature));
+      body.appendChild(el("p", "task-scene", t.scene || t.description || ""));
+      if (t.submit) {
+        var sub = el("p", "task-submit");
+        sub.appendChild(el("strong", null, "📝 回報內容："));
+        sub.appendChild(document.createTextNode(t.submit));
+        body.appendChild(sub);
+      }
       li.appendChild(body);
       tasks.appendChild(li);
     });
 
     setupForm(CONFIG.studentForm, s.name, $("#embed-student"), $("#btn-student"), "學生挑戰填答表單");
+    if (!$("#btn-student").classList.contains("is-disabled")) $("#btn-student").classList.add("btn-glow");
     setupForm(CONFIG.teacherForm, s.name, $("#embed-teacher"), $("#btn-teacher"), "老師服務申請表單");
 
     var ts = CONFIG.teacherService || {};
@@ -267,6 +274,7 @@
       if (g.pending) item.appendChild(pendingTag());
       card.appendChild(item);
       card.appendChild(el("span", "gift-qty", g.qty != null ? g.qty + " 名" : ""));
+      if (!gifts.children.length) card.classList.add("gift-top");
       gifts.appendChild(card);
     });
     if (!gifts.children.length) gifts.appendChild(el("p", "muted", "禮品確認中"));
@@ -291,6 +299,43 @@
     }
   }
 
+  // 捲動淡入：區塊捲進畫面時淡入。使用者設定「減少動態效果」時不啟用；
+  // 每秒再檢查一次位置當作保險，確保已在畫面內的內容一定看得到
+  function setupReveal() {
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var pending = Array.prototype.slice.call(document.querySelectorAll(
+      "main > div:not([hidden]) .section .section-title, main > div:not([hidden]) .section .container > :not(.section-title), .task"
+    ));
+    pending.forEach(function (t) {
+      t.classList.add("reveal");
+      if (t.classList.contains("task")) t.style.transitionDelay = (Array.prototype.indexOf.call(t.parentNode.children, t) * 0.12) + "s";
+    });
+
+    var ticking = false;
+    function check() {
+      ticking = false;
+      var limit = window.innerHeight * 0.92;
+      pending = pending.filter(function (t) {
+        if (t.getBoundingClientRect().top < limit) { t.classList.add("is-visible"); return false; }
+        return true;
+      });
+      if (!pending.length) stop();
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; (window.requestAnimationFrame || setTimeout)(check); }
+    }
+    function stop() {
+      clearInterval(timer);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("hashchange", function () { setTimeout(check, 50); });
+    var timer = setInterval(check, 1000);   // 保險：就算捲動事件沒觸發，畫面內的區塊也會出現
+    check();
+  }
+
   function init() {
     bind("campaignName", CONFIG.campaignName);
     bind("tagline", CONFIG.tagline || "");
@@ -308,4 +353,5 @@
   }
 
   init();
+  setupReveal();
 })();
