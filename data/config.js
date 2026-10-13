@@ -30,6 +30,9 @@ const CONFIG = {
   },
   teacherForm: { baseUrl: "", schoolEntryId: "", embed: false },
 
+  // Google Analytics 4 評估 ID（空白 = 不追蹤）。本機預覽時不會送出資料，網址加上 ?ga_debug=1 才會送（並進入 DebugView）
+  ga4Id: "G-QNTSLB585S",
+
   statementUrl: "",   // 活動聲明（個資與抽獎規則）連結；空白時顯示「準備中」
   announcement: "",   // 得獎公告方式，例如「12/25 於飛資得官網及各校圖書館公告」
 

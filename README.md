@@ -156,3 +156,22 @@ git push
 **關於 LINE 預覽**：LINE 抓預覽時不會執行 JavaScript，所以所有學校的連結都會顯示同一組預覽標題和圖片。更換預覽圖後，LINE 可能會快取舊圖數天，可以到 [LINE Page Poker](https://poker.line.naver.jp/) 清除快取。
 
 **關於搜尋引擎**：網站已加上 `noindex` 和 `robots.txt`，可以降低被收錄的機會，但無法完全保證。
+
+## 七、數據追蹤（Google Analytics 4）
+
+- 評估 ID 設定在 `data/config.js` 的 `ga4Id`（清空即停止追蹤），程式在 `js/analytics.js`。
+- 本機預覽不會送出資料；網址加上 `?ga_debug=1` 才會送出，並出現在 GA4 的「DebugView」。
+- 每個事件都帶 `school`（學校代碼）參數。
+
+| 事件 | 意義 | 參數 |
+| --- | --- | --- |
+| `page_view`（內建） | 瀏覽頁面 | `school`、`page_type` |
+| `scroll_depth` | 捲動到 25／50／75／100% | `percent` |
+| `section_view` | 區塊被看到 | `section`（topics／student／teacher／info／notice…） |
+| `topic_click` | 點擊訂購主題 | `topic`（例如 Journal - Biology） |
+| `topic_menu_open` | 展開主題下拉選單 | `product` |
+| `cta_click` | 點擊按鈕 | `button`（student_form／teacher_form／jump_student／sticky_teacher／statement…） |
+| `faq_open` | 展開常見問題 | `question` |
+
+GA4 後台需建立「自訂維度」（管理 → 資料顯示 → 自訂定義），報表才能依這些參數篩選：
+`school`、`topic`、`button`、`section`、`product`、`percent`、`page_type`（範圍皆選「事件」）。

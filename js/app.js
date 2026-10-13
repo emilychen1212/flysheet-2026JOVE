@@ -110,6 +110,7 @@
   }
 
   function renderHome(notFound) {
+    document.body.dataset.page = notFound ? "not_found" : "home";
     document.getElementById("view-home").hidden = false;
     if (notFound) document.getElementById("not-found").hidden = false;
 
@@ -158,6 +159,7 @@
     if (url) { card.href = url; card.target = "_blank"; card.rel = "noopener"; }
     card.appendChild(el("span", "topic-name", t.title));
     if (url) card.appendChild(el("span", "topic-arrow", "→"));
+    card.dataset.topic = t.product + " - " + t.title;
     return card;
   }
 
@@ -180,6 +182,7 @@
 
       if (collapse) {
         var d = el("details", "topic-group topic-dropdown");
+        d.dataset.product = product;
         var sum = el("summary", "topic-dropdown-head");
         sum.appendChild(el("span", "topic-dropdown-name", "JoVE " + product));
         sum.appendChild(el("span", "topic-count", byProduct[product].length + " 個主題"));
@@ -203,6 +206,8 @@
   function renderSchool(key, s) {
     document.getElementById("view-school").hidden = false;
     document.body.classList.add("is-school");
+    document.body.dataset.page = "school";
+    document.body.dataset.school = key;
     document.title = s.name + " × 飛資得｜" + CONFIG.campaignName;
     $("#topbar-title").textContent = s.name + " × " + CONFIG.organizer;
 
