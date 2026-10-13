@@ -40,8 +40,16 @@ const SCHOOLS = {
     active: true,
     themeColor: "",
     bannerImage: "",
-    topics: ["core-anatomy-and-physiology", "se-basic-biology"],
-    topicsPending: true,
+    topics: [
+      "journal-biology",
+      "journal-neuroscience",
+      "journal-immunology-and-infection",
+      "journal-medicine",
+      "journal-biochemistry",
+      "journal-cancer-research",
+      "journal-chemistry",
+      "se-basic-biology"
+    ],
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
       { tier: "參與獎", item: "禮品待確認", qty: 15, pending: true }
