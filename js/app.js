@@ -209,12 +209,23 @@
     if (s.themeColor && /^#[0-9a-f]{3,8}$/i.test(s.themeColor)) {
       document.documentElement.style.setProperty("--brand", s.themeColor);
     }
-    var banner = safeUrl(s.bannerImage);
+    // 頁首底圖：學校自訂 bannerImage 優先，否則用 config 的共用底圖
+    var banner = safeUrl(s.bannerImage || CONFIG.schoolBanner);
     if (banner) {
       var hero = $("#school-hero");
       hero.classList.add("has-banner");
-      hero.style.backgroundImage =
-        "linear-gradient(rgba(6,30,46,.55), rgba(6,30,46,.75)), url(\"" + banner.replace(/"/g, "") + "\")";
+      hero.style.backgroundImage = "url(\"" + banner.replace(/"/g, "") + "\")";
+    }
+
+    var logo = safeUrl(s.logo);
+    var chip = $("#school-logo");
+    if (logo && chip) {
+      var img = document.createElement("img");
+      img.src = logo;
+      img.alt = s.name;
+      chip.appendChild(img);
+      chip.hidden = false;
+      if ($("#logo-x")) $("#logo-x").hidden = false;
     }
 
     bind("schoolName", s.name);

@@ -22,14 +22,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261013">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="logo-slot" aria-label="Logo 預留位置">Logo</div>
+      <img class="topbar-logo" src="assets/img/logo-flysheet.png" alt="飛資得醫學資訊 FlySheet Med-Informatics" width="160" height="23">
       <span class="topbar-title" id="topbar-title">JoVE 挑戰 2026</span>
     </div>
   </header>
@@ -126,9 +126,9 @@
       <section class="hero hero-school" id="school-hero">
         <div class="container">
           <div class="logo-pair">
-            <div class="logo-slot logo-slot-light">學校 Logo</div>
-            <span aria-hidden="true">×</span>
-            <div class="logo-slot logo-slot-light">飛資得 Logo</div>
+            <span class="logo-chip" id="school-logo" hidden></span>
+            <span class="logo-x" id="logo-x" aria-hidden="true" hidden>×</span>
+            <span class="logo-chip"><img src="assets/img/logo-flysheet.png" alt="飛資得醫學資訊"></span>
           </div>
           <h1 class="hero-title">
             <span data-bind="schoolName"></span> <span class="nowrap">× 飛資得</span><br>
@@ -214,9 +214,9 @@
 
   <noscript><p class="container">請開啟瀏覽器的 JavaScript 以瀏覽活動內容。</p></noscript>
 
-  <script src="data/config.js"></script>
-  <script src="data/topics.js"></script>
-  <script src="data/schools.js"></script>
-  <script src="js/app.js"></script>
+  <script src="data/config.js?v=20261013"></script>
+  <script src="data/topics.js?v=20261013"></script>
+  <script src="data/schools.js?v=20261013"></script>
+  <script src="js/app.js?v=20261013"></script>
 </body>
 </html>

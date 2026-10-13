@@ -17,7 +17,8 @@ data/config.js      活動共用設定：期間、表單、學生任務、FAQ…
 data/schools.js     各校資料
 data/topics.js      JoVE 全主題清單（由 Excel 自動產生）
 assets/og-image.png LINE 分享預覽圖（1200×630）
-assets/logos/       Logo 素材放這裡
+assets/img/         網頁用的 banner 與 logo（已壓縮）
+assets/logos/       Logo 原始檔（只留在本機，不上傳）
 tools/list-links.js 列出所有學校連結的小腳本（只在本機執行）
 tools/build-topics.py 從 Excel 產生 data/topics.js
 ```
@@ -133,7 +134,9 @@ git commit -m "更新學校資料"
 git push
 ```
 
-推送後等 1–2 分鐘生效。手機若看到舊內容，關掉分頁重開或下拉重新整理即可。
+推送後等 1–2 分鐘生效。
+
+> 修改 CSS 或 JS 後，請把 `index.html` 裡所有 `?v=日期` 改成新的日期，避免使用者的瀏覽器繼續用快取的舊檔案。手機若看到舊內容，關掉分頁重開或下拉重新整理即可。
 
 ## 六、其他設定
 
@@ -147,7 +150,8 @@ git push
 | 老師服務說明與名額 | `config.js` → `teacherService` |
 | LINE 分享預覽的標題／描述 | `index.html` 開頭的 `og:` 那幾行 |
 | LINE 分享預覽圖 | 替換 `assets/og-image.png`（1200×630） |
-| Logo | 把 `index.html` 中的 `<div class="logo-slot">` 換成 `<img src="assets/logos/xxx.svg" alt="…" height="32">` |
+| 學校頁頁首底圖（所有學校共用） | `config.js` → `schoolBanner`；個別學校可用 `schools.js` 的 `bannerImage` 覆寫 |
+| Logo | 原始檔放 `assets/logos/`（不會上傳），網頁用版本在 `assets/img/logo-代碼.png`，由 `schools.js` 的 `logo` 指定 |
 
 **關於 LINE 預覽**：LINE 抓預覽時不會執行 JavaScript，所以所有學校的連結都會顯示同一組預覽標題和圖片。更換預覽圖後，LINE 可能會快取舊圖數天，可以到 [LINE Page Poker](https://poker.line.naver.jp/) 清除快取。
 

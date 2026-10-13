@@ -8,7 +8,8 @@
  *   hostName      館方名稱，例如「圖書館」「圖書資訊處」
  *   active        true 才會開放；false 時連結會顯示「找不到此學校」
  *   themeColor    主題色（例如 "#7a1f3d"），空白用預設色
- *   bannerImage   banner 圖路徑（例如 "assets/banners/mmu.jpg"），空白用預設漸層
+ *   logo          學校 logo 路徑（例如 "assets/img/logo-mmu.png"），空白就只顯示飛資得 logo
+ *   bannerImage   該校專屬頁首底圖（選填），空白時使用 config.js 的共用底圖 schoolBanner
  *   topics        訂購主題代碼清單，代碼對照見 data/topics.js
  *                 例如 "journal-biology"、"se-basic-biology"、"core-calculus"
  *                 "module:Research" / "module:Education" = 該模組全部主題（Unlimited 客戶用）
@@ -25,6 +26,7 @@ const SCHOOLS = {
   mmu: {
     name: "馬偕醫學大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-mmu.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -41,6 +43,7 @@ const SCHOOLS = {
   ndmu: {
     name: "國防醫學大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-ndmu.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -64,6 +67,7 @@ const SCHOOLS = {
   cgust: {
     name: "長庚科技大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-cgust.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -80,6 +84,7 @@ const SCHOOLS = {
   fju: {
     name: "輔仁大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-fju.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -94,6 +99,7 @@ const SCHOOLS = {
   sinica: {
     name: "中央研究院",
     hostName: "圖書館",
+    logo: "assets/img/logo-sinica.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -119,6 +125,7 @@ const SCHOOLS = {
   nthu: {
     name: "國立清華大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-nthu.png",
     active: true,
     themeColor: "",
     bannerImage: "",
@@ -147,6 +154,7 @@ const SCHOOLS = {
   nycu: {
     name: "國立陽明交通大學",
     hostName: "圖書館",
+    logo: "assets/img/logo-nycu.png",
     active: true,
     themeColor: "",
     bannerImage: "",

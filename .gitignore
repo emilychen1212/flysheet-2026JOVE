@@ -1,3 +1,7 @@
 .DS_Store
 node_modules/
 .claude/
+# 原始圖檔只留在本機；網站使用的是 assets/img/ 裡壓縮過的版本
+assets/logos/*
+!assets/logos/README.txt
+assets/banners/
