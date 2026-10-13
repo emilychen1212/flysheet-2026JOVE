@@ -117,7 +117,7 @@ const SCHOOLS = {
   },
 
   nthu: {
-    name: "清華大學",
+    name: "國立清華大學",
     hostName: "圖書館",
     active: true,
     themeColor: "",
@@ -145,7 +145,7 @@ const SCHOOLS = {
   },
 
   nycu: {
-    name: "陽明交通大學",
+    name: "國立陽明交通大學",
     hostName: "圖書館",
     active: true,
     themeColor: "",
