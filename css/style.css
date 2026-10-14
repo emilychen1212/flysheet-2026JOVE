@@ -185,8 +185,20 @@ section[id] { scroll-margin-top: 84px; }
 .faq-item p { padding: 0 16px 16px; color: var(--muted); }
 
 /* ===== 主題卡片 ===== */
-.topic-groups { display: flex; flex-wrap: wrap; column-gap: 36px; row-gap: 20px; }
-.topic-groups > .topic-group { flex: 0 1 auto; max-width: 100%; }
+.topic-groups { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; }
+.topic-groups > .topic-group { flex: 1 1 auto; max-width: 100%; }
+
+/* 每個產品一個小區塊：標題列＋分界線＋主題按鈕 */
+.topic-box {
+  background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+  border-left: 4px solid var(--accent); overflow: hidden;
+}
+.topic-box .topic-group-title {
+  margin: 0; padding: 10px 14px; background: var(--brand-soft);
+  border-bottom: 1px solid var(--line); font-size: 15px;
+}
+.topic-box .topics { padding: 12px 14px 14px; }
+.topic-box .topic { min-height: 38px; padding: 5px 13px; font-size: 14px; }
 .topic-groups.is-collapsed { display: grid; }
 .topic-group-title {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
@@ -200,7 +212,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 .topic-groups.is-collapsed { gap: 10px; }
 .topic-groups.is-collapsed > .topic-group { flex: none; }
-.topic-dropdown { background: #fff; border: 1.5px solid var(--line); border-radius: 12px; }
+.topic-dropdown { background: #fff; border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; }
 .topic-dropdown[open] { border-color: var(--brand); }
 .topic-dropdown-head {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;

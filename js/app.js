@@ -191,8 +191,10 @@
         d.appendChild(list);
         box.appendChild(d);
       } else {
-        var group = el("div", "topic-group");
-        var head = el("h3", "topic-group-title", "JoVE " + product);
+        var group = el("div", "topic-group topic-box");
+        var head = el("h3", "topic-group-title");
+        head.appendChild(el("span", "topic-dropdown-name", "JoVE " + product));
+        head.appendChild(el("span", "topic-count", byProduct[product].length + " 個主題"));
         if (s.topicsPending) head.appendChild(pendingTag());
         group.appendChild(head);
         group.appendChild(list);
