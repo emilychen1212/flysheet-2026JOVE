@@ -31,7 +31,6 @@ const SCHOOLS = {
     themeColor: "",
     bannerImage: "",
     topics: ["core-biology", "se-clinical-skills", "journal-medicine"],
-    topicsPending: true,
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
       { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
@@ -77,7 +76,6 @@ const SCHOOLS = {
     themeColor: "",
     bannerImage: "",
     topics: ["se-clinical-skills", "core-biology"],
-    topicsPending: true,
     gifts: [
       { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
       { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
