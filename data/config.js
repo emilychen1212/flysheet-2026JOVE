@@ -24,8 +24,8 @@ const CONFIG = {
   // embed: true 會把表單直接嵌在頁面中（下方保留「開新視窗填寫」備用按鈕）
   //   ⚠️ 含「檔案上傳」題的表單必須登入 Google，嵌入時多數手機會顯示空白，建議維持 false
   studentForm: {
-    baseUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdwxEtJLxvzq3hX94T3xJE9TQYayVdUIMKO6lPjxUx--dDPwQ/viewform",
-    schoolEntryId: "entry.967330370",   // 「學校名稱」題
+    baseUrl: "https://docs.google.com/forms/d/e/1FAIpQLScubWbFBk_iT981LT5hXsEdrfvA1EEPvt-QBtbyqEbO7U-pfA/viewform",
+    schoolEntryId: "entry.1161382229",   // 「學校名稱」題
     embed: false
   },
   teacherForm: { baseUrl: "", schoolEntryId: "", embed: false },
