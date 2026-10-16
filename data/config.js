@@ -28,7 +28,11 @@ const CONFIG = {
     schoolEntryId: "entry.1161382229",   // 「學校名稱」題
     embed: false
   },
-  teacherForm: { baseUrl: "", schoolEntryId: "", embed: false },
+  teacherForm: {
+    baseUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7S05kEEa9TIjZX7aMq5J_5uCvhSJRJ-xQNd96zvibgrY15A/viewform",
+    schoolEntryId: "entry.1091917578",   // 「學校名稱」題
+    embed: false
+  },
 
   // Google Analytics 4 評估 ID（空白 = 不追蹤）。本機預覽時不會送出資料，網址加上 ?ga_debug=1 才會送（並進入 DebugView）
   ga4Id: "G-QNTSLB585S",
