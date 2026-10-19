@@ -175,3 +175,12 @@ git push
 
 GA4 後台需建立「自訂維度」（管理 → 資料顯示 → 自訂定義），報表才能依這些參數篩選：
 `school`、`topic`、`button`、`section`、`product`、`percent`、`page_type`（範圍皆選「事件」）。
+
+## 八、內部總覽頁（/forflysheet/）
+
+網址：`https://emilychen1212.github.io/flysheet-2026JOVE/forflysheet/`
+
+- 一頁列出所有學校的連結（一般／LINE 版，可一鍵複製）、訂購主題、禮品與表單狀態。
+- 需登入才會顯示；同一個瀏覽器分頁內重新整理不必再登入，按「登出」或關閉分頁即失效。
+- **更換帳密**：執行 `node tools/make-admin-hash.js 新帳號 新密碼`，把印出的雜湊值貼到 `forflysheet/index.html` 的 `ADMIN_HASH`，推上 GitHub。
+- ⚠️ 這是靜態網站上的「簡易門鎖」：網站只存雜湊值、不存密碼原文，但 repo 是公開的，懂技術的人仍可直接讀取 `data/schools.js` 等資料檔。請勿在資料檔放內部機密（報價、聯絡人電話等），也不要沿用其他系統的密碼。

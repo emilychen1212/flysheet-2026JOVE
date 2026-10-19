@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>內部總覽｜JoVE 挑戰 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20261019">
+  <style>
+    body { background: var(--bg-alt); }
+    .admin-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* 登入 */
+    .login-card {
+      max-width: 380px; margin: 10vh auto 0; background: #fff; border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow);
+    }
+    .login-card h1 { font-size: 22px; margin-bottom: 4px; color: var(--brand); }
+    .login-card p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+    .field { display: block; margin-bottom: 14px; }
+    .field span { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .field input, .search {
+      width: 100%; min-height: 46px; padding: 0 14px; border: 1.5px solid var(--line);
+      border-radius: 10px; font: inherit; background: #fff;
+    }
+    .field input:focus, .search:focus { outline: none; border-color: var(--brand); }
+    .login-card .login-error { color: #b42318; font-size: 14px; min-height: 1.4em; margin: -4px 0 10px; }
+    .login-card .btn { width: 100%; }
+
+    /* 總覽 */
+    .admin-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .admin-head h1 { font-size: clamp(22px, 5vw, 28px); color: var(--brand); }
+    .admin-head .muted { font-size: 14px; }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; font-size: 14px; }
+    .stat strong { font-size: 20px; color: var(--brand); margin-right: 4px; }
+    .ok { color: #0b7a73; font-weight: 700; }
+    .ng { color: #b42318; font-weight: 700; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .toolbar .search { flex: 1 1 240px; }
+    .btn-sm { min-height: 40px; padding: 0 14px; font-size: 14px; border-radius: 10px; }
+
+    .school-grid { display: grid; gap: 14px; }
+    @media (min-width: 900px) { .school-grid { grid-template-columns: 1fr 1fr; } }
+    .school-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .school-card.is-off { opacity: .65; }
+    .sc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .sc-head img { height: 40px; width: auto; max-width: 140px; object-fit: contain; }
+    .sc-title { flex: 1; }
+    .sc-title h2 { font-size: 18px; }
+    .sc-title code { font-size: 13px; color: var(--muted); }
+    .badge-on, .badge-off { font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+    .badge-on { background: #e3f6f4; color: #0b7a73; }
+    .badge-off { background: #fdecec; color: #b42318; }
+    .link-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .link-row label { flex: none; width: 44px; font-size: 13px; font-weight: 700; color: var(--accent); }
+    .link-row input { flex: 1; min-width: 0; min-height: 38px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 13px; background: var(--bg-alt); color: var(--ink); }
+    .sc-meta { margin-top: 12px; font-size: 14px; display: grid; gap: 6px; }
+    .sc-meta details summary { cursor: pointer; font-weight: 700; color: var(--brand); }
+    .sc-meta ul { margin: 6px 0 0; padding-left: 20px; color: var(--ink); }
+    .sc-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .toast {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+      background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 14px;
+      opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 50;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <!-- 登入畫面 -->
+  <div class="admin-wrap" id="login-view">
+    <form class="login-card" id="login-form" autocomplete="off">
+      <h1>內部總覽</h1>
+      <p>JoVE 挑戰 2026｜飛資得醫學資訊內部使用</p>
+      <label class="field"><span>帳號</span><input id="acc" name="username" autocomplete="username" required></label>
+      <label class="field"><span>密碼</span><input id="pwd" name="password" type="password" autocomplete="current-password" required></label>
+      <p class="login-error" id="login-error" role="alert"></p>
+      <button class="btn btn-primary" type="submit" id="login-btn">登入</button>
+    </form>
+  </div>
+
+  <!-- 總覽畫面 -->
+  <div class="admin-wrap" id="admin-view" hidden>
+    <div class="admin-head">
+      <div>
+        <h1 id="admin-title">內部總覽</h1>
+        <p class="muted" id="admin-period"></p>
+      </div>
+      <button class="btn btn-outline btn-sm" id="logout">登出</button>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="搜尋校名或代碼">
+      <button class="btn btn-primary btn-sm" id="copy-all">複製全部連結</button>
+      <button class="btn btn-secondary btn-sm" id="copy-all-line">複製全部 LINE 連結</button>
+    </div>
+
+    <div class="school-grid" id="school-grid"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="../data/config.js?v=20261019"></script>
+  <script src="../data/topics.js?v=20261019"></script>
+  <script src="../data/schools.js?v=20261019"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    // 帳密雜湊值（PBKDF2-SHA256）。更換帳密：node tools/make-admin-hash.js 帳號 密碼，把結果貼到這裡
+    var ADMIN_HASH = "a0e4c916defe35904d8a3992d6ee6bddc75c5b62a473d1d18828d939d0ed1f1c";
+    var SALT = "flysheet-jove-2026", ITERATIONS = 150000;
+    var SESSION_KEY = "jove-admin-ok";
+
+    var $ = function (s) { return document.querySelector(s); };
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+
+    function hashCredentials(account, password) {
+      var enc = new TextEncoder();
+      return crypto.subtle.importKey("raw", enc.encode(account.trim().toLowerCase() + "|" + password), "PBKDF2", false, ["deriveBits"])
+        .then(function (key) {
+          return crypto.subtle.deriveBits({ name: "PBKDF2", salt: enc.encode(SALT), iterations: ITERATIONS, hash: "SHA-256" }, key, 256);
+        })
+        .then(function (bits) {
+          return Array.prototype.map.call(new Uint8Array(bits), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+        });
+    }
+
+    function session(v) {
+      try {
+        if (v === undefined) return sessionStorage.getItem(SESSION_KEY) === ADMIN_HASH;
+        if (v) sessionStorage.setItem(SESSION_KEY, ADMIN_HASH); else sessionStorage.removeItem(SESSION_KEY);
+      } catch (e) { return false; }
+    }
+
+    // ===== 登入 =====
+    $("#login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var err = $("#login-error");
+      if (!window.crypto || !crypto.subtle) { err.textContent = "此瀏覽器不支援，請改用 Chrome、Safari 或 Edge 開啟"; return; }
+      $("#login-btn").disabled = true;
+      $("#login-btn").textContent = "驗證中…";
+      err.textContent = "";
+      hashCredentials($("#acc").value, $("#pwd").value).then(function (h) {
+        $("#login-btn").disabled = false;
+        $("#login-btn").textContent = "登入";
+        if (h === ADMIN_HASH) { session(true); showAdmin(); }
+        else { err.textContent = "帳號或密碼錯誤"; $("#pwd").value = ""; $("#pwd").focus(); }
+      });
+    });
+
+    $("#logout").addEventListener("click", function () {
+      session(false);
+      location.reload();
+    });
+
+    // ===== 總覽 =====
+    var base = (CONFIG.siteUrl || "").replace(/\/+$/, "");
+    function links(key) {
+      return { web: base + "/?school=" + key, line: base + "/?school=" + key + "&openExternalBrowser=1" };
+    }
+
+    function toast(msg) {
+      var t = $("#toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(function () { t.classList.remove("show"); }, 1600);
+    }
+
+    function copy(text, msg) {
+      function fallback() {
+        var ta = el("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); toast(msg); } catch (e) { toast("無法複製，請手動選取"); }
+        ta.remove();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { toast(msg); }, fallback);
+      } else fallback();
+    }
+
+    function resolveTopics(codes) {
+      var wanted = {};
+      (codes || []).forEach(function (code) {
+        var m = /^module:(.+)$/i.exec(code);
+        Object.keys(TOPICS).forEach(function (k) {
+          if (m ? TOPICS[k].module.toLowerCase() === m[1].toLowerCase() : k === code) wanted[k] = true;
+        });
+      });
+      return Object.keys(TOPICS).filter(function (k) { return wanted[k]; }).map(function (k) { return TOPICS[k]; });
+    }
+
+    function formOk(f) { return !!(f && f.baseUrl && f.schoolEntryId); }
+
+    function showAdmin() {
+      $("#login-view").hidden = true;
+      $("#admin-view").hidden = false;
+
+      var p = CONFIG.period || {};
+      $("#admin-title").textContent = CONFIG.campaignName + "｜內部總覽";
+      $("#admin-period").textContent = "活動期間 " + (p.start || "") + " - " + (p.end || "") + "　｜　主頁面：" + base + "/";
+
+      var keys = Object.keys(SCHOOLS);
+      var activeCount = keys.filter(function (k) { return SCHOOLS[k].active; }).length;
+      var stats = $("#stats");
+      function stat(html) { var d = el("div", "stat"); d.innerHTML = html; stats.appendChild(d); }
+      stat("<strong>" + keys.length + "</strong>間學校（開放 " + activeCount + "）");
+      stat("學生表單：" + (formOk(CONFIG.studentForm) ? '<span class="ok">已接上</span>' : '<span class="ng">未設定</span>'));
+      stat("老師表單：" + (formOk(CONFIG.teacherForm) ? '<span class="ok">已接上</span>' : '<span class="ng">未設定</span>'));
+      stat("GA4：" + (CONFIG.ga4Id ? '<span class="ok">' + CONFIG.ga4Id + "</span>" : '<span class="ng">未設定</span>'));
+
+      var grid = $("#school-grid");
+      keys.forEach(function (key) {
+        var s = SCHOOLS[key], l = links(key);
+        var card = el("article", "school-card" + (s.active ? "" : " is-off"));
+        card.dataset.search = (s.name + " " + key).toLowerCase();
+
+        var head = el("div", "sc-head");
+        if (s.logo) { var img = el("img"); img.src = "../" + s.logo; img.alt = ""; head.appendChild(img); }
+        var title = el("div", "sc-title");
+        title.appendChild(el("h2", null, s.name));
+        title.appendChild(el("code", null, "?school=" + key));
+        head.appendChild(title);
+        head.appendChild(el("span", s.active ? "badge-on" : "badge-off", s.active ? "開放中" : "未啟用"));
+        card.appendChild(head);
+
+        [["一般", l.web, "已複製一般連結"], ["LINE", l.line, "已複製 LINE 連結"]].forEach(function (row) {
+          var r = el("div", "link-row");
+          r.appendChild(el("label", null, row[0]));
+          var inp = el("input"); inp.readOnly = true; inp.value = row[1];
+          inp.addEventListener("focus", function () { inp.select(); });
+          r.appendChild(inp);
+          var b = el("button", "btn btn-outline btn-sm", "複製");
+          b.type = "button";
+          b.addEventListener("click", function () { copy(row[1], s.name + "：" + row[2]); });
+          r.appendChild(b);
+          card.appendChild(r);
+        });
+
+        var meta = el("div", "sc-meta");
+        var topics = resolveTopics(s.topics);
+        var byProduct = {};
+        topics.forEach(function (t) { (byProduct[t.product] = byProduct[t.product] || []).push(t.title); });
+        var td = el("details");
+        td.appendChild(el("summary", null, "訂購主題 " + topics.length + " 個（" + Object.keys(byProduct).map(function (k) { return k + " " + byProduct[k].length; }).join("、") + "）"));
+        var tul = el("ul");
+        Object.keys(byProduct).forEach(function (k) { tul.appendChild(el("li", null, k + "：" + byProduct[k].join("、"))); });
+        td.appendChild(tul);
+        meta.appendChild(td);
+
+        var gifts = s.gifts || [];
+        var pending = gifts.filter(function (g) { return g.pending; }).length;
+        var gd = el("details");
+        gd.appendChild(el("summary", null, "禮品 " + gifts.length + " 項" + (pending ? "（" + pending + " 項待確認）" : "")));
+        var gul = el("ul");
+        gifts.forEach(function (g) { gul.appendChild(el("li", null, g.tier + "：" + g.item + " × " + g.qty)); });
+        gd.appendChild(gul);
+        meta.appendChild(gd);
+
+        meta.appendChild(el("div", "muted", "館方：" + (s.hostName ? s.name + s.hostName : "未填")));
+        card.appendChild(meta);
+
+        var act = el("div", "sc-actions");
+        var open = el("a", "btn btn-primary btn-sm", "開啟頁面");
+        open.href = "../?school=" + encodeURIComponent(key); open.target = "_blank"; open.rel = "noopener";
+        act.appendChild(open);
+        card.appendChild(act);
+
+        grid.appendChild(card);
+      });
+
+      $("#search").addEventListener("input", function () {
+        var q = this.value.trim().toLowerCase();
+        grid.querySelectorAll(".school-card").forEach(function (c) { c.hidden = q && c.dataset.search.indexOf(q) === -1; });
+      });
+
+      function allLinks(type) {
+        return keys.filter(function (k) { return SCHOOLS[k].active; })
+          .map(function (k) { return SCHOOLS[k].name + "\n" + links(k)[type]; }).join("\n\n");
+      }
+      $("#copy-all").addEventListener("click", function () { copy(allLinks("web"), "已複製全部學校的一般連結"); });
+      $("#copy-all-line").addEventListener("click", function () { copy(allLinks("line"), "已複製全部學校的 LINE 連結"); });
+    }
+
+    if (session()) showAdmin(); else $("#acc").focus();
+  })();
+  </script>
+</body>
+</html>
