@@ -10,7 +10,7 @@ const CONFIG = {
   // 活動期間：日期未定時保留 "??"，網頁會顯示「日期確認中」
   period: { start: "2026/10/28（三）", end: "2026/12/18（五）" },
 
-  // 學校頁的頁首共用底圖（各校可在 schools.js 用 bannerImage 個別覆寫）
+  // 頁首共用底圖：主頁面與所有學校頁（各校可在 schools.js 用 bannerImage 個別覆寫）
   schoolBanner: "assets/img/banner.jpg",
 
   // 主頁面是否列出所有學校入口按鈕（預設 false：只提示透過館方公告連結參加）

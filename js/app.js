@@ -109,9 +109,18 @@
     return Object.keys(SCHOOLS).filter(function (k) { return SCHOOLS[k].active; });
   }
 
+  // 套用頁首底圖（淺色底圖＋深色文字）
+  function applyBanner(hero, src) {
+    var banner = safeUrl(src);
+    if (!hero || !banner) return;
+    hero.classList.add("has-banner");
+    hero.style.backgroundImage = "url(\"" + banner.replace(/"/g, "") + "\")";
+  }
+
   function renderHome(notFound) {
     document.body.dataset.page = notFound ? "not_found" : "home";
     document.getElementById("view-home").hidden = false;
+    applyBanner(document.getElementById("home-hero"), CONFIG.schoolBanner);
     if (notFound) document.getElementById("not-found").hidden = false;
 
     if (CONFIG.showSchoolList) {
@@ -217,12 +226,7 @@
       document.documentElement.style.setProperty("--brand", s.themeColor);
     }
     // 頁首底圖：學校自訂 bannerImage 優先，否則用 config 的共用底圖
-    var banner = safeUrl(s.bannerImage || CONFIG.schoolBanner);
-    if (banner) {
-      var hero = $("#school-hero");
-      hero.classList.add("has-banner");
-      hero.style.backgroundImage = "url(\"" + banner.replace(/"/g, "") + "\")";
-    }
+    applyBanner($("#school-hero"), s.bannerImage || CONFIG.schoolBanner);
 
     var logo = safeUrl(s.logo);
     var chip = $("#school-logo");
