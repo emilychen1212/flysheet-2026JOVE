@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261019">
+  <link rel="stylesheet" href="../css/style.css?v=20261021">
   <style>
     body { background: var(--bg-alt); }
     .admin-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
@@ -75,7 +75,7 @@
   <div class="admin-wrap" id="login-view">
     <form class="login-card" id="login-form" autocomplete="off">
       <h1>內部總覽</h1>
-      <p>JoVE 挑戰 2026｜飛資得醫學資訊內部使用</p>
+      <p>JoVE 挑戰 2026｜飛資得醫學資訊內部使用<br>登入後此裝置 30 天內免再登入；公用電腦請記得登出。</p>
       <label class="field"><span>帳號</span><input id="acc" name="username" autocomplete="username" required></label>
       <label class="field"><span>密碼</span><input id="pwd" name="password" type="password" autocomplete="current-password" required></label>
       <p class="login-error" id="login-error" role="alert"></p>
@@ -106,9 +106,9 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="../data/config.js?v=20261019"></script>
-  <script src="../data/topics.js?v=20261019"></script>
-  <script src="../data/schools.js?v=20261019"></script>
+  <script src="../data/config.js?v=20261021"></script>
+  <script src="../data/topics.js?v=20261021"></script>
+  <script src="../data/schools.js?v=20261021"></script>
   <script>
   (function () {
     "use strict";
@@ -137,10 +137,18 @@
         });
     }
 
+    // 登入狀態記在這台裝置的瀏覽器 30 天（存的是雜湊值與到期時間，不是密碼）；按「登出」立即清除
+    var REMEMBER_DAYS = 30;
     function session(v) {
       try {
-        if (v === undefined) return sessionStorage.getItem(SESSION_KEY) === ADMIN_HASH;
-        if (v) sessionStorage.setItem(SESSION_KEY, ADMIN_HASH); else sessionStorage.removeItem(SESSION_KEY);
+        if (v === undefined) {
+          var saved = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+          if (saved && saved.h === ADMIN_HASH && saved.exp > Date.now()) return true;
+          localStorage.removeItem(SESSION_KEY);   // 過期或換過密碼 → 需重新登入
+          return false;
+        }
+        if (v) localStorage.setItem(SESSION_KEY, JSON.stringify({ h: ADMIN_HASH, exp: Date.now() + REMEMBER_DAYS * 864e5 }));
+        else localStorage.removeItem(SESSION_KEY);
       } catch (e) { return false; }
     }
 
