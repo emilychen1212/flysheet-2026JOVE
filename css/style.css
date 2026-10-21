@@ -71,21 +71,21 @@ section[id] { scroll-margin-top: 84px; }
 .logo-x { font-size: 20px; color: var(--muted); }
 
 /* 學校頁：淺色底圖＋深色文字，內容置中（底圖中央留白） */
-.has-banner {
+.hero.has-banner {
   position: relative; color: var(--ink);
   background-color: #eef8f6; background-size: cover; background-position: center;
   text-align: center;
 }
-.has-banner::before {
+.hero.has-banner::before {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6));
 }
-.has-banner .container { position: relative; }
-.has-banner .logo-pair { justify-content: center; flex-wrap: nowrap; }
-.has-banner .hero-title { color: var(--brand); }
-.has-banner .hero-sub, .has-banner .eyebrow { color: #0b7a73; }
-.has-banner .hero-tagline { color: var(--ink); opacity: 1; font-weight: 500; }
-.has-banner .period-chip {
+.hero.has-banner .container { position: relative; }
+.hero.has-banner .logo-pair { justify-content: center; flex-wrap: nowrap; }
+.hero.has-banner .hero-title { color: var(--brand); }
+.hero.has-banner .hero-sub, .hero.has-banner .eyebrow { color: #0b7a73; }
+.hero.has-banner .hero-tagline { color: var(--ink); opacity: 1; font-weight: 500; }
+.hero.has-banner .period-chip {
   background: rgba(255,255,255,.85); border-color: var(--line); color: var(--brand);
 }
 
@@ -307,12 +307,17 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 .gift-panel .gifts { gap: 8px; }
 .gift-panel .gift { padding: 10px 12px; gap: 10px; }
 .gift-panel .gift-tier { font-size: 13px; min-width: 4.4em; text-align: center; }
+.teacher-tag {
+  display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 6px;
+  font-size: 12px; font-weight: 700; line-height: 22px; white-space: nowrap; vertical-align: 1px;
+  background: #e3f6f4; color: #0b7a73; border: 1px solid #a8ddd7;
+}
 
 /* 頁首快速跳轉按鈕：只在電腦／平板顯示（手機用底部固定按鈕） */
 .hero-actions { display: none; }
 @media (min-width: 720px) {
   .hero-actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
-  .has-banner .hero-actions { justify-content: center; }
+  .hero.has-banner .hero-actions { justify-content: center; }
   .hero-actions .btn { min-width: 150px; min-height: 50px; box-shadow: 0 4px 14px rgba(11, 61, 92, .18); }
 }
 @media (min-width: 1024px) { .hero-school.has-banner .hero-actions { justify-content: flex-start; } }
@@ -427,7 +432,7 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   .is-school .footer { padding-bottom: 28px; }
   .logo-chip { max-width: none; height: 64px; padding: 10px 18px; }
   .logo-chip img { height: 100%; max-height: none; }
-  .has-banner { padding: 80px 0 88px; }
+  .hero.has-banner { padding: 80px 0 88px; }
 }
 
 /* ===== 電腦（寬螢幕）：內容拉寬，卡片多欄排列，減少換行 ===== */
@@ -438,7 +443,7 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   .gift-panel { padding: 22px; }
   body { font-size: 17px; }
   .container { padding: 0 32px; }
-  .has-banner { padding: 104px 0 112px; }
+  .hero.has-banner { padding: 104px 0 112px; }
   .logo-chip { height: 72px; }
   .tasks { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .task { flex-direction: column; }

@@ -17,7 +17,7 @@
  *   topicsSummary 主題區上方的一句說明（選填），例如「本校訂購 JoVE Unlimited…」
  *   topicsCollapsed 主題超過 15 個時，各產品自動折疊成下拉選單；
  *                 填 true／false 可強制開啟／關閉折疊（選填）
- *   gifts         禮品 [{ tier, item, qty, pending }]
+ *   gifts         禮品 [{ tier, item, qty, pending, teacher }]；teacher: true 顯示「老師挑戰限定」標籤
  *   note          該校專屬說明（選填）
  *
  * pending: true → 顯示黃色「待確認」標籤，確認後刪除這行即可。
@@ -32,11 +32,11 @@ const SCHOOLS = {
     bannerImage: "",
     topics: ["core-biology", "se-clinical-skills", "journal-medicine"],
     gifts: [
-      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
-      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
-      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
+      { tier: "首獎", item: "Apple 禮品卡 $500", qty: 1 },
+      { tier: "貳獎", item: "全家禮品卡 $100", qty: 10 },
+      { tier: "參獎", item: "超商飲料兌換券 $50", qty: 10 },
+      { tier: "特別獎", item: "JoVE 學習好物組（JoVE 杯子＋筆記本＋帆布袋）", qty: 1 },
+      { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
     note: ""
   },
@@ -59,11 +59,11 @@ const SCHOOLS = {
       "se-basic-biology"
     ],
     gifts: [
-      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
-      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
-      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
+      { tier: "首獎", item: "樂扣樂扣綿綿奶蓋不鏽鋼吸管隨行杯 $800", qty: 1 },
+      { tier: "二獎", item: "iwalk 行動電源（Type-C 頭）$700", qty: 1 },
+      { tier: "三獎", item: "7-11 $200 商品卡", qty: 2 },
+      { tier: "參加獎", item: "JoVE 贈品（杯子／帆布袋／筆記本 各 2 份）", qty: 6 },
+      { tier: "老師獎", item: "星巴克禮券 $135", qty: 10, teacher: true }
     ],
     note: ""
   },
@@ -156,11 +156,10 @@ const SCHOOLS = {
       "eoe-biology"
     ],
     gifts: [
-      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
-      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
-      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
+      { tier: "首獎", item: "Apple 禮品卡 $500", qty: 3 },
+      { tier: "貳獎", item: "超商禮品卡 $100", qty: 15 },
+      { tier: "參獎", item: "JoVE 學習好物組（JoVE 杯子＋筆記本＋帆布袋）", qty: 1 },
+      { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
     note: ""
   },
@@ -176,11 +175,10 @@ const SCHOOLS = {
     topics: ["module:Research", "module:Education"],
     topicsSummary: "本校訂購 JoVE Unlimited：Research 與 Education 全部主題",
     gifts: [
-      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
-      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
-      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
+      { tier: "首獎", item: "Apple 禮品卡 $500", qty: 3 },
+      { tier: "貳獎", item: "超商禮品卡 $100", qty: 20 },
+      { tier: "參獎", item: "JoVE 學習好物組（JoVE 杯子＋筆記本＋帆布袋）", qty: 2 },
+      { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
     note: ""
   }

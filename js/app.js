@@ -283,6 +283,7 @@
       card.appendChild(el("span", "gift-tier", g.tier));
       var item = el("span", "gift-item", g.item);
       if (g.pending) item.appendChild(pendingTag());
+      if (g.teacher) item.appendChild(el("span", "teacher-tag", "老師挑戰限定"));
       card.appendChild(item);
       card.appendChild(el("span", "gift-qty", g.qty != null ? g.qty + " 名" : ""));
       if (!gifts.children.length) card.classList.add("gift-top");
