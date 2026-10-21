@@ -18,6 +18,7 @@
  *   topicsCollapsed 主題超過 15 個時，各產品自動折疊成下拉選單；
  *                 填 true／false 可強制開啟／關閉折疊（選填）
  *   gifts         禮品 [{ tier, item, qty, pending, teacher }]；teacher: true 顯示「老師挑戰限定」標籤
+ *   bonus         true → 在學生挑戰與老師挑戰之間顯示「加碼挑戰」（JoVE Quiz）區塊（選填）
  *   note          該校專屬說明（選填）
  *
  * pending: true → 顯示黃色「待確認」標籤，確認後刪除這行即可。
@@ -59,12 +60,13 @@ const SCHOOLS = {
       "se-basic-biology"
     ],
     gifts: [
-      { tier: "首獎", item: "樂扣樂扣綿綿奶蓋不鏽鋼吸管隨行杯 $800", qty: 1 },
-      { tier: "二獎", item: "iwalk 行動電源（Type-C 頭）$700", qty: 1 },
+      { tier: "首獎", item: "樂扣樂扣綿綿奶蓋不鏽鋼吸管隨行杯", qty: 1 },
+      { tier: "二獎", item: "iwalk 行動電源（Type-C 頭）", qty: 1 },
       { tier: "三獎", item: "7-11 $200 商品卡", qty: 2 },
       { tier: "參加獎", item: "JoVE 贈品（杯子／帆布袋／筆記本 各 2 份）", qty: 6 },
-      { tier: "老師獎", item: "星巴克禮券 $135", qty: 10, teacher: true }
+      { tier: "老師獎", item: "星巴克禮券", qty: 10, teacher: true }
     ],
+    bonus: true,          // 顯示「加碼挑戰」區塊
     note: ""
   },
 
@@ -180,6 +182,7 @@ const SCHOOLS = {
       { tier: "參獎", item: "JoVE 學習好物組（JoVE 杯子＋筆記本＋帆布袋）", qty: 2 },
       { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
+    bonus: true,          // 顯示「加碼挑戰」區塊
     note: ""
   }
 };

@@ -272,6 +272,37 @@
     if (!$("#btn-student").classList.contains("is-disabled")) $("#btn-student").classList.add("btn-glow");
     setupForm(CONFIG.teacherForm, s.name, $("#embed-teacher"), $("#btn-teacher"), "老師服務申請表單");
 
+    // 老師挑戰：服務流程步驟
+    var flow = $("#teacher-steps");
+    if (flow) {
+      (CONFIG.teacherSteps || []).forEach(function (st, i) {
+        var li = el("li", "flow-step");
+        li.appendChild(el("span", "flow-no", "STEP " + (i + 1)));
+        li.appendChild(el("h4", null, st.title));
+        li.appendChild(el("p", null, st.text));
+        flow.appendChild(li);
+      });
+      if (!flow.children.length) { flow.hidden = true; if ($(".flow-title")) $(".flow-title").hidden = true; }
+    }
+
+    // 加碼挑戰（只在 bonus: true 的學校顯示）
+    var bc = CONFIG.bonusChallenge || {};
+    if (s.bonus && $("#bonus")) {
+      $("#bonus-title").textContent = bc.title || "加碼挑戰";
+      $("#bonus-text").textContent = bc.text || "";
+      var bBtn = $("#btn-bonus");
+      bBtn.textContent = bc.button || "我要參加";
+      var bUrl = safeUrl(s.bonusUrl || bc.url);
+      if (bUrl) bBtn.href = bUrl;
+      else {
+        bBtn.removeAttribute("target");
+        bBtn.classList.add("is-disabled");
+        bBtn.setAttribute("aria-disabled", "true");
+        bBtn.textContent = "即將開放";
+      }
+      $("#bonus").hidden = false;
+    }
+
     var ts = CONFIG.teacherService || {};
     bind("teacherDesc", ts.description || "服務內容確認中");
     bind("teacherQuota", ts.quota || "名額有限");

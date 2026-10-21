@@ -355,6 +355,34 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   .gift-top::after, .btn-glow { animation: none; }
 }
 
+/* 老師挑戰：服務流程步驟 */
+.flow-title { font-size: 17px; margin: 24px 0 12px; color: var(--ink); }
+.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: none; }
+.flow-step {
+  position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  border-top: 4px solid var(--accent); padding: 16px 18px; box-shadow: var(--shadow);
+}
+.flow-no { font-size: 12px; font-weight: 900; letter-spacing: .12em; color: var(--accent); }
+.flow-step h4 { font-size: 17px; margin: 4px 0 6px; }
+.flow-step p { font-size: 15px; color: var(--muted); }
+.flow-step:last-child { border-top-color: var(--highlight); background: #fffaf0; }
+.flow-step:last-child .flow-no { color: #b7791f; }
+@media (min-width: 1024px) {
+  .flow { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .flow-step:not(:last-child)::after {
+    content: "→"; position: absolute; right: -15px; top: 50%; transform: translateY(-50%);
+    color: var(--accent); font-weight: 900; font-size: 16px; z-index: 1;
+  }
+}
+
+/* 加碼挑戰：窄窄的橫向提示帶，低調但看得到 */
+.bonus-band { background: #fff8e8; border-top: 1px solid #f6e1b3; border-bottom: 1px solid #f6e1b3; padding: 14px 0; }
+.bonus-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.bonus-label { font-weight: 900; color: #8a5300; white-space: nowrap; font-size: 15px; }
+.bonus-text { flex: 1 1 260px; font-size: 15px; color: var(--ink); }
+.bonus-btn { background: #fff; color: #8a5300; border-color: #f2c97a; min-height: 40px; }
+.bonus-btn:hover { background: #fff1cc; }
+
 /* ===== 活動注意事項 ===== */
 .notices {
   margin: 0; padding: 18px 18px 18px 38px; background: #fff;

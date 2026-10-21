@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261022b">
+  <link rel="stylesheet" href="css/style.css?v=20261023">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -176,6 +176,15 @@
         </div>
       </section>
 
+      <!-- 加碼挑戰：只在 schools.js 設定 bonus: true 的學校顯示 -->
+      <div class="bonus-band" id="bonus" hidden>
+        <div class="container bonus-inner">
+          <span class="bonus-label"><span aria-hidden="true">🎯</span> <span id="bonus-title">加碼挑戰</span></span>
+          <p class="bonus-text" id="bonus-text"></p>
+          <a class="btn btn-sm bonus-btn" id="btn-bonus" target="_blank" rel="noopener">我要參加</a>
+        </div>
+      </div>
+
       <section class="section" id="teacher">
         <div class="container">
           <h2 class="section-title"><span class="kicker">TEACHER MISSION</span>老師挑戰</h2>
@@ -183,6 +192,8 @@
             <p data-bind="teacherDesc"></p>
             <p class="quota"><span aria-hidden="true">⏳</span> <span data-bind="teacherQuota"></span></p>
           </div>
+          <h3 class="flow-title">申請後的服務流程</h3>
+          <ol class="flow" id="teacher-steps"></ol>
           <div class="form-embed" id="embed-teacher" hidden></div>
           <div class="cta-wrap">
             <a class="btn btn-secondary btn-lg" id="btn-teacher" target="_blank" rel="noopener">申請服務</a>
@@ -226,10 +237,10 @@
 
   <noscript><p class="container">請開啟瀏覽器的 JavaScript 以瀏覽活動內容。</p></noscript>
 
-  <script src="data/config.js?v=20261022b"></script>
-  <script src="data/topics.js?v=20261022b"></script>
-  <script src="data/schools.js?v=20261022b"></script>
-  <script src="js/app.js?v=20261022b"></script>
-  <script src="js/analytics.js?v=20261022b"></script>
+  <script src="data/config.js?v=20261023"></script>
+  <script src="data/topics.js?v=20261023"></script>
+  <script src="data/schools.js?v=20261023"></script>
+  <script src="js/app.js?v=20261023"></script>
+  <script src="js/analytics.js?v=20261023"></script>
 </body>
 </html>
