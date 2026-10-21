@@ -355,8 +355,16 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   .gift-top::after, .btn-glow { animation: none; }
 }
 
+/* 老師挑戰：標題旁的名額標籤 */
+.quota-tag {
+  display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;
+  margin-left: 12px; padding: 3px 12px; border-radius: 999px;
+  background: #fff6e6; border: 1px solid #f2c97a; color: #8a5300;
+  font-size: 14px; font-weight: 700; letter-spacing: 0; white-space: nowrap;
+}
+
 /* 老師挑戰：服務流程步驟 */
-.flow-title { font-size: 17px; margin: 24px 0 12px; color: var(--ink); }
+.flow-title { font-size: 17px; margin: 4px 0 12px; color: var(--ink); }
 .flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: none; }
 .flow-step {
   position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
