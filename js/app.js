@@ -29,8 +29,8 @@
     return s;
   }
 
-  function periodText() {
-    var p = CONFIG.period || {};
+  function periodText(p) {
+    p = p || CONFIG.period || {};
     var start = fmtDate(p.start), end = fmtDate(p.end);
     if (start && end) return start + " - " + end;
     if (start) return start + " 起（結束日確認中）";
@@ -250,6 +250,7 @@
     }
 
     bind("schoolName", s.name);
+    if (s.period) bind("period", periodText(s.period));   // 該校自訂活動期間（例如清大延後開始）
 
     if (s.note) {
       var note = $("#school-note");

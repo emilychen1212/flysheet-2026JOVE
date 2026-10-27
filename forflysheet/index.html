@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261027b">
+  <link rel="stylesheet" href="../css/style.css?v=20261028">
   <style>
     body { background: var(--bg-alt); }
     .admin-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
@@ -106,9 +106,9 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="../data/config.js?v=20261027b"></script>
-  <script src="../data/topics.js?v=20261027b"></script>
-  <script src="../data/schools.js?v=20261027b"></script>
+  <script src="../data/config.js?v=20261028"></script>
+  <script src="../data/topics.js?v=20261028"></script>
+  <script src="../data/schools.js?v=20261028"></script>
   <script>
   (function () {
     "use strict";
@@ -241,6 +241,7 @@
         var title = el("div", "sc-title");
         title.appendChild(el("h2", null, s.name));
         title.appendChild(el("code", null, "?school=" + key));
+        if (s.period) title.appendChild(el("div", "muted", "自訂活動期間：" + s.period.start + " - " + s.period.end));
         head.appendChild(title);
         head.appendChild(el("span", s.active ? "badge-on" : "badge-off", s.active ? "開放中" : "未啟用"));
         card.appendChild(head);

@@ -7,6 +7,7 @@
  *   name          校名（必填，也會自動帶入表單）
  *   hostName      館方名稱，例如「圖書館」「圖書資訊處」
  *   active        true 才會開放；false 時連結會顯示「找不到此學校」
+ *   period        該校自訂活動期間 { start, end }（選填，空白用 config.js 的共用期間）
  *   themeColor    主題色（例如 "#7a1f3d"），空白用預設色
  *   logo          學校 logo 路徑（例如 "assets/img/logo-mmu.png"），空白就只顯示飛資得 logo
  *   bannerImage   該校專屬頁首底圖（選填），空白時使用 config.js 的共用底圖 schoolBanner
@@ -143,6 +144,7 @@ const SCHOOLS = {
     hostName: "圖書館",
     logo: "assets/img/logo-nthu.png",
     active: true,
+    period: { start: "2026/11/2（一）", end: "2026/12/18（五）" },   // 清大延後開始
     themeColor: "",
     bannerImage: "",
     topics: [
