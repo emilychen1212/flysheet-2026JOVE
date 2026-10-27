@@ -18,7 +18,7 @@
  *   topicsSummary 主題區上方的一句說明（選填），例如「本校訂購 JoVE Unlimited…」
  *   topicsCollapsed 主題超過 15 個時，各產品自動折疊成下拉選單；
  *                 填 true／false 可強制開啟／關閉折疊（選填）
- *   gifts         禮品 [{ tier, item, qty, pending, teacher }]；teacher: true 顯示「老師挑戰限定」標籤
+ *   gifts         禮品 [{ tier, item, qty, unit, pending, teacher }]；unit 預設「名」；teacher: true 顯示「老師挑戰限定」標籤
  *   bonus         true → 在學生挑戰與老師挑戰之間顯示「加碼挑戰」（JoVE Quiz）區塊（選填）
  *   bonusLinks    加碼挑戰的多個題目按鈕 [{ label, url }]（選填，取代單一「我要參加」按鈕）
  *   bonusGuide    加碼挑戰的作答指引按鈕 { label, url }（選填，url 空白顯示「即將開放」）
@@ -101,11 +101,9 @@ const SCHOOLS = {
     bannerImage: "",
     topics: ["core-calculus"],
     gifts: [
-      { tier: "頭獎", item: "禮品待確認", qty: 1, pending: true },
-      { tier: "貳獎", item: "禮品待確認", qty: 2, pending: true },
-      { tier: "參獎", item: "禮品待確認", qty: 3, pending: true },
-      { tier: "肆獎", item: "禮品待確認", qty: 5, pending: true },
-      { tier: "參與獎", item: "禮品待確認", qty: 20, pending: true }
+      { tier: "首獎", item: "超商禮品卡 $100", qty: 5, unit: "份" },
+      { tier: "貳獎", item: "7-11 飲料兌換券", qty: 5, unit: "份" },
+      { tier: "老師獎", item: "超商禮品卡 $100", qty: 10, unit: "份", teacher: true }
     ],
     note: ""
   },
