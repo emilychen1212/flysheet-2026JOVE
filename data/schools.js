@@ -200,9 +200,9 @@ const SCHOOLS = {
     ],
     bonus: true,          // 顯示「加碼挑戰」區塊
     bonusLinks: [
-      { label: "商管領域", url: "https://www.jove.com/quiz/invite/7e006a3d-53c0-4533-8425-f7f6657ed313" },
+      { label: "商管領域", url: "https://www.jove.com/quiz/invite/ef9e85a0-5641-40a6-a9b5-7887ca102755" },
       { label: "理化領域", url: "https://www.jove.com/quiz/invite/1d0ae1f5-1be3-4ab8-b27f-62bfc3e1125b" },
-      { label: "生醫領域", url: "https://www.jove.com/quiz/invite/ef9e85a0-5641-40a6-a9b5-7887ca102755" }
+      { label: "生醫領域", url: "https://www.jove.com/quiz/invite/7e006a3d-53c0-4533-8425-f7f6657ed313" }
     ],
     bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
     // 頁首提醒（banner 按鈕下方）
