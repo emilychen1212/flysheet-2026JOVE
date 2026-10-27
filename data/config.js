@@ -35,7 +35,7 @@ const CONFIG = {
   },
 
   // Google Analytics 4 評估 ID（空白 = 不追蹤）。本機預覽時不會送出資料，網址加上 ?ga_debug=1 才會送（並進入 DebugView）
-  ga4Id: "G-QNTSLB585S",
+  ga4Id: "G-726ZY28DQM",
 
   announcement: "預計將於 12/24 後，陸續以信箱或電話聯繫中獎者，告知後續領獎事宜",
 
