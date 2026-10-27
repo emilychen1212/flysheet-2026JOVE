@@ -269,6 +269,7 @@
       body.appendChild(el("h3", null, t.title));
       if (t.feature) body.appendChild(el("span", "chip", "使用功能：" + t.feature));
       body.appendChild(el("p", "task-scene", t.scene || t.description || ""));
+      if (CONFIG.studentTaskNote) body.appendChild(el("p", "task-note", "⚠️ " + CONFIG.studentTaskNote));
       if (t.submit) {
         var sub = el("p", "task-submit");
         sub.appendChild(el("strong", null, "📝 回報內容："));
@@ -321,8 +322,12 @@
       if (s.bonusLinks && s.bonusLinks.length) {
         var acts = $("#bonus-actions");
         acts.innerHTML = "";
-        s.bonusLinks.forEach(function (b) { acts.appendChild(linkButton("btn btn-sm bonus-btn", b.label + " →", b.url, "bonus_quiz_" + b.label)); });
-        if (s.bonusGuide) acts.appendChild(linkButton("btn btn-sm bonus-guide", "📖 " + s.bonusGuide.label, s.bonusGuide.url, "bonus_guide"));
+        s.bonusLinks.forEach(function (b) { acts.appendChild(linkButton("btn bonus-btn", b.label + " →", b.url, "bonus_quiz_" + b.label)); });
+      }
+      // 作答指引：放在「加碼挑戰」標題旁
+      if (s.bonusGuide && $("#bonus-guide")) {
+        $("#bonus-guide").appendChild(linkButton("btn btn-sm resource-btn", "📖 " + s.bonusGuide.label, s.bonusGuide.url, "bonus_guide"));
+        $("#bonus-guide").hidden = false;
       }
       $("#bonus").hidden = false;
     }
