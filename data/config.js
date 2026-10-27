@@ -47,7 +47,7 @@ const CONFIG = {
   //   學校可在 schools.js 用 manualUrl 換成該校專屬的使用手冊（例如國醫）
   resources: [
     { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual", id: "manual" },
-    { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw", track: "resource_signup_video", id: "signup_video" }
+    { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=ZX0CX0WtGa4ZSAr-", track: "resource_signup_video", id: "signup_video" }
   ],
 
   // 頁首提醒（banner 按鈕下方，所有學校預設顯示；學校可在 schools.js 用 heroNote 換成自己的說明，例如陽交大）
@@ -55,7 +55,7 @@ const CONFIG = {
   defaultHeroNote: {
     text: "參加活動請記得先申請個人帳號",
     button: "▶️ 建立帳號教學影片",
-    url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw",
+    url: "https://youtu.be/5XrQib7s_ZM?si=ZX0CX0WtGa4ZSAr-",
     track: "hero_signup_video",
     hides: "signup_video"
   },
