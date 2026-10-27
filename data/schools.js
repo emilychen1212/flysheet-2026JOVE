@@ -205,6 +205,8 @@ const SCHOOLS = {
       { label: "生醫領域", url: "https://www.jove.com/quiz/invite/7e006a3d-53c0-4533-8425-f7f6657ed313" }
     ],
     bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
+    // 專屬使用手冊（取代共用手冊）
+    manualUrl: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view",
     // 頁首提醒（banner 按鈕下方）
     heroNote: {
       text: "參加活動請記得先申請個人帳號",

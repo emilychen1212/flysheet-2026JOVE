@@ -46,7 +46,7 @@ const CONFIG = {
   // 學習資源按鈕（所有學校共用，顯示在「已訂購主題」說明下方，以及「學生挑戰」標題旁）
   //   學校可在 schools.js 用 manualUrl 換成該校專屬的使用手冊（例如國醫）
   resources: [
-    { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual", id: "manual" },
+    { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/1lh149kC2Q41iqqf5Hox8VKW-2lhes0ak/view?usp=sharing", track: "resource_manual", id: "manual" },
     { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=ZX0CX0WtGa4ZSAr-", track: "resource_signup_video", id: "signup_video" }
   ],
 
