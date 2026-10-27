@@ -146,7 +146,7 @@ git push
 | 主頁面是否列出學校按鈕 | `config.js` → `showSchoolList`（預設 `false`） |
 | 學生任務 | `config.js` → `studentTasks` |
 | FAQ | `config.js` → `faq` |
-| 抽獎方式、公告管道、活動聲明 | `config.js` → `drawMethod`、`announcement`、`statementUrl` |
+| 抽獎方式、公告管道 | `config.js` → `drawMethod`、`announcement` |
 | 老師服務說明與名額 | `config.js` → `teacherService` |
 | LINE 分享預覽的標題／描述 | `index.html` 開頭的 `og:` 那幾行 |
 | LINE 分享預覽圖 | 替換 `assets/og-image.png`（1200×630） |
@@ -170,7 +170,7 @@ git push
 | `section_view` | 區塊被看到 | `section`（topics／student／teacher／info／notice…） |
 | `topic_click` | 點擊訂購主題 | `topic`（例如 Journal - Biology） |
 | `topic_menu_open` | 展開主題下拉選單 | `product` |
-| `cta_click` | 點擊按鈕 | `button`（student_form／teacher_form／jump_student／sticky_teacher／statement…） |
+| `cta_click` | 點擊按鈕 | `button`（student_form／teacher_form／jump_student／sticky_teacher…） |
 | `faq_open` | 展開常見問題 | `question` |
 
 GA4 後台需建立「自訂維度」（管理 → 資料顯示 → 自訂定義），報表才能依這些參數篩選：

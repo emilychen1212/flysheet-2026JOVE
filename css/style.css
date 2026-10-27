@@ -397,6 +397,12 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 .resource-btn { background: #fff; color: var(--brand); border-color: var(--line); min-height: 42px; }
 .resource-btn:hover { border-color: var(--brand); background: var(--brand-soft); }
 
+/* 學生挑戰：標題旁的使用手冊／教學影片按鈕 */
+.title-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 16px; margin-bottom: 18px; }
+.title-row .section-title { margin-bottom: 0; }
+.title-links { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 2px; }
+.title-links[hidden] { display: none; }
+
 /* 頁首提醒（例如：先申請個人帳號） */
 .hero-note {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px;

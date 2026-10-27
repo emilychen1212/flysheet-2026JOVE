@@ -7,7 +7,7 @@
  *   topic_click      點擊訂購主題         topic: "Journal - Biology"
  *   topic_menu_open  展開主題下拉選單     product: "Core"
  *   cta_click        點擊按鈕             button: student_form / teacher_form / jump_student / jump_teacher /
- *                                                 sticky_student / sticky_teacher / statement / school_entry / line_open / bonus_quiz
+ *                                                 sticky_student / sticky_teacher / school_entry / line_open / bonus_quiz
  *   faq_open         展開常見問題         question: 問題文字
  * 不送出任何姓名、Email 或表單內容。
  */
@@ -95,7 +95,6 @@
     else if (a.id === "btn-bonus") button = "bonus_quiz";
     else if (a.closest(".hero-actions")) button = "jump_" + (a.getAttribute("href") || "").replace("#", "");
     else if (a.closest(".sticky-cta")) button = "sticky_" + (a.getAttribute("href") || "").replace("#", "");
-    else if (a.closest("#statement")) button = "statement";
     else if (a.closest("#school-list")) button = "school_entry";
     if (button) {
       if (a.classList.contains("is-disabled")) return;

@@ -37,16 +37,16 @@ const CONFIG = {
   // Google Analytics 4 評估 ID（空白 = 不追蹤）。本機預覽時不會送出資料，網址加上 ?ga_debug=1 才會送（並進入 DebugView）
   ga4Id: "G-QNTSLB585S",
 
-  statementUrl: "",   // 活動聲明（個資與抽獎規則）連結；空白時顯示「準備中」
   announcement: "預計將於 12/24 後，陸續以信箱或電話聯繫中獎者，告知後續領獎事宜",
 
   // 抽獎方式說明
   drawMethod: "活動結束後，預計於 12/23 由飛資得醫學以隨機方式抽出得獎者",
 
   // 老師挑戰說明
-  // 學習資源按鈕（所有學校共用，顯示在「已訂購主題」下方）
+  // 學習資源按鈕（所有學校共用，顯示在「已訂購主題」說明下方，以及「學生挑戰」標題旁）
+  //   學校可在 schools.js 用 manualUrl 換成該校專屬的使用手冊（例如國醫）
   resources: [
-    { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual" },
+    { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual", id: "manual" },
     { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw", track: "resource_signup_video", id: "signup_video" }
   ],
 

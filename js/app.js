@@ -340,15 +340,24 @@
       $("#hero-note").hidden = false;
     }
 
-    // 學習資源按鈕（已訂購主題下方）
+    // 學習資源按鈕：已訂購主題說明下方＋學生挑戰標題旁（學校可用 manualUrl 換專屬手冊）
+    function resourceButton(r, track) {
+      var url = (r.id === "manual" && s.manualUrl) ? s.manualUrl : r.url;
+      return linkButton("btn btn-sm resource-btn", (r.icon ? r.icon + " " : "") + r.label, url, track);
+    }
     var res = $("#resources");
     if (res && CONFIG.resources && CONFIG.resources.length) {
       res.appendChild(el("span", "resource-label", "還不熟悉 JoVE？"));
       CONFIG.resources.forEach(function (r) {
         if (hiddenResource && r.id === hiddenResource) return;   // 已顯示在頁首，不重複
-        res.appendChild(linkButton("btn btn-sm resource-btn", (r.icon ? r.icon + " " : "") + r.label, r.url, r.track || "resource"));
+        res.appendChild(resourceButton(r, r.track || "resource"));
       });
       res.hidden = false;
+    }
+    var sres = $("#student-resources");
+    if (sres && CONFIG.resources && CONFIG.resources.length) {
+      CONFIG.resources.forEach(function (r) { sres.appendChild(resourceButton(r, "student_" + (r.track || "resource"))); });
+      sres.hidden = false;
     }
 
     var ts = CONFIG.teacherService || {};
@@ -372,16 +381,6 @@
 
     bind("drawMethod", CONFIG.drawMethod || "確認中");
     bind("announcement", CONFIG.announcement || "公告方式確認中");
-
-    var st = $("#statement");
-    var stUrl = safeUrl(CONFIG.statementUrl);
-    if (stUrl) {
-      var a = el("a", null, "查看活動聲明（個資與抽獎規則）");
-      a.href = stUrl; a.target = "_blank"; a.rel = "noopener";
-      st.appendChild(a);
-    } else {
-      st.textContent = "活動聲明準備中";
-    }
 
     var notices = $("#notices");
     if (notices) {
