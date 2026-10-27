@@ -30,7 +30,7 @@ a { color: var(--brand); }
 h1, h2, h3 { line-height: 1.35; margin: 0; }
 p { margin: 0; }
 [hidden] { display: none !important; }
-section[id] { scroll-margin-top: 84px; }
+section[id], #bonus { scroll-margin-top: 84px; }
 
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .muted { color: var(--muted); }
@@ -411,6 +411,8 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 
 /* 加碼挑戰：多個題目按鈕 */
 .bonus-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn-bonus-jump { background: #fff8e8; color: #8a5300; border-color: #f2c97a; }
+.btn-bonus-jump:hover { background: #fff1cc; }
 .bonus-guide { background: transparent; color: #8a5300; border-color: transparent; text-decoration: underline; text-underline-offset: 3px; min-height: 40px; padding: 0 8px; }
 .bonus-guide:hover { background: #fff1cc; }
 

@@ -299,6 +299,12 @@
     // 加碼挑戰（只在 bonus: true 的學校顯示）
     var bc = CONFIG.bonusChallenge || {};
     if (s.bonus && $("#bonus")) {
+      var jump = $(".hero-actions");
+      if (jump && !jump.querySelector('a[href="#bonus"]')) {
+        var jb = el("a", "btn btn-bonus-jump", "加碼挑戰 ↓");
+        jb.href = "#bonus";
+        jump.appendChild(jb);
+      }
       $("#bonus-title").textContent = bc.title || "加碼挑戰";
       $("#bonus-text").textContent = bc.text || "";
       var bBtn = $("#btn-bonus");
@@ -321,12 +327,15 @@
       $("#bonus").hidden = false;
     }
 
-    // 頁首提醒（例如陽交大：先申請個人帳號）
-    if (s.heroNote && $("#hero-note")) {
-      $("#hero-note-text").textContent = s.heroNote.text || "";
+    // 頁首提醒：學校自訂 heroNote（例如陽交大）優先，否則用共用預設（建立帳號教學影片）
+    var note = s.heroNote || CONFIG.defaultHeroNote;
+    var hiddenResource = s.heroNote ? null : (note && note.hides);
+    if (note && $("#hero-note")) {
+      $("#hero-note-text").textContent = note.text || "";
       var hb = $("#hero-note-btn");
-      hb.textContent = s.heroNote.button || "查看說明";
-      var hUrl = safeUrl(s.heroNote.url);
+      hb.textContent = note.button || "查看說明";
+      if (note.track) hb.dataset.track = note.track;
+      var hUrl = safeUrl(note.url);
       if (hUrl) hb.href = hUrl; else hb.hidden = true;
       $("#hero-note").hidden = false;
     }
@@ -336,6 +345,7 @@
     if (res && CONFIG.resources && CONFIG.resources.length) {
       res.appendChild(el("span", "resource-label", "還不熟悉 JoVE？"));
       CONFIG.resources.forEach(function (r) {
+        if (hiddenResource && r.id === hiddenResource) return;   // 已顯示在頁首，不重複
         res.appendChild(linkButton("btn btn-sm resource-btn", (r.icon ? r.icon + " " : "") + r.label, r.url, r.track || "resource"));
       });
       res.hidden = false;

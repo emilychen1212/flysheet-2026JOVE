@@ -47,8 +47,18 @@ const CONFIG = {
   // 學習資源按鈕（所有學校共用，顯示在「已訂購主題」下方）
   resources: [
     { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual" },
-    { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw", track: "resource_signup_video" }
+    { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw", track: "resource_signup_video", id: "signup_video" }
   ],
+
+  // 頁首提醒（banner 按鈕下方，所有學校預設顯示；學校可在 schools.js 用 heroNote 換成自己的說明，例如陽交大）
+  //   hides：使用預設提醒時，從上方 resources 隱藏重複的按鈕
+  defaultHeroNote: {
+    text: "參加活動請記得先申請個人帳號",
+    button: "▶️ 建立帳號教學影片",
+    url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw",
+    track: "hero_signup_video",
+    hides: "signup_video"
+  },
 
   // 老師挑戰：申請後的服務流程（顯示為步驟卡片）
   teacherSteps: [
