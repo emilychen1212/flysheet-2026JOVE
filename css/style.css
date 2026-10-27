@@ -386,6 +386,19 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 
 /* 加碼挑戰：窄窄的橫向提示帶，低調但看得到 */
 .section-bonus { background: #fffcf2; border-top: 1px solid #f8ecc9; border-bottom: 1px solid #f8ecc9; padding: 32px 0; }
+.section-bonus { position: relative; overflow: hidden; }
+.section-bonus > .container { position: relative; z-index: 1; }
+/* 右側裝飾：頁首底圖的右下角實驗桌，蓋一層同色淡黃、往左淡出融入底色 */
+.section-bonus::before {
+  content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: min(48%, 600px);
+  background:
+    linear-gradient(rgba(255, 244, 212, .5), rgba(255, 244, 212, .5)),
+    url("../assets/img/bonus-corner.jpg") right bottom / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+  pointer-events: none;
+}
+@media (max-width: 719px) { .section-bonus::before { width: 70%; opacity: .45; } }
 .section-bonus .kicker { color: #b07400; }
 .section-bonus .section-desc { color: var(--ink); margin: -8px 0 14px; }
 .bonus-btn { background: #fff; color: #8a5300; border-color: #f2c97a; min-height: 44px; }
