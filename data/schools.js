@@ -191,7 +191,7 @@ const SCHOOLS = {
       { label: "理化領域", url: "https://www.jove.com/quiz/invite/1d0ae1f5-1be3-4ab8-b27f-62bfc3e1125b" },
       { label: "生醫領域", url: "https://www.jove.com/quiz/invite/ef9e85a0-5641-40a6-a9b5-7887ca102755" }
     ],
-    bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "" },   // 待提供連結
+    bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
     // 頁首提醒（banner 按鈕下方）
     heroNote: {
       text: "參加活動請記得先申請個人帳號",
