@@ -64,8 +64,7 @@ section[id], #bonus { scroll-margin-top: 84px; }
 /* Logo 白底小卡：不同底色、白底 JPG 的 logo 放在一起也整齊 */
 .logo-chip {
   display: inline-flex; align-items: center; justify-content: center;
-  max-width: calc(50% - 20px); padding: 8px 10px; background: #fff; border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(11, 61, 92, .10);
+  max-width: calc(50% - 20px); padding: 8px 4px;
 }
 .logo-chip img { width: auto; max-width: 100%; height: auto; max-height: 40px; }
 .logo-x { font-size: 20px; color: var(--muted); }
