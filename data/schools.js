@@ -73,7 +73,7 @@ const SCHOOLS = {
     ],
     bonus: true,          // 顯示「加碼挑戰」區塊
     bonusLinks: [
-      { label: "分子生醫領域", url: "https://www.jove.com/quiz/invite/45810668-1df9-4a19-b343-c9fc9cb38f3c" }
+      { label: "開始作答", url: "https://www.jove.com/quiz/invite/45810668-1df9-4a19-b343-c9fc9cb38f3c" }
     ],
     bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
     // 專屬使用手冊（取代共用手冊）
