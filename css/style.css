@@ -450,6 +450,7 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
   margin: -6px 0 18px; padding: 10px 14px; border-radius: 10px;
   background: #fff; border: 1px dashed var(--line); font-size: 14px; color: var(--muted);
 }
+ul.form-hint { list-style: none; display: grid; gap: 4px; }
 .form-embed {
   margin-top: 20px; background: #fff; border: 1px solid var(--line);
   border-radius: var(--radius); overflow: hidden;

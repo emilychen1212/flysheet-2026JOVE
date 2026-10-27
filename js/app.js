@@ -262,6 +262,14 @@
 
     // 學生任務
     var tasks = $("#tasks");
+    var hints = $("#student-hints");
+    if (hints) {
+      (CONFIG.studentHints || []).forEach(function (h) {
+        if (h.bonusOnly && !s.bonus) return;
+        hints.appendChild(el("li", null, "📎 " + h.text));
+      });
+      if (!hints.children.length) hints.hidden = true;
+    }
     (CONFIG.studentTasks || []).forEach(function (t, i) {
       var li = el("li", "task");
       li.appendChild(el("span", "task-no", String(i + 1).padStart(2, "0")));
