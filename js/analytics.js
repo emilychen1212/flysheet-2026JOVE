@@ -9,6 +9,11 @@
  *   cta_click        點擊按鈕             button: student_form / teacher_form / jump_student / jump_teacher /
  *                                                 sticky_student / sticky_teacher / school_entry / line_open / bonus_quiz
  *   faq_open         展開常見問題         question: 問題文字
+ * 重點行動另外送獨立事件（方便在 GA「管理 → 重要事件」標記，cta_click 照送）：
+ *   student_form_open  點「馬上填答」開學生表單
+ *   teacher_form_open  點「申請服務」開老師表單
+ *   bonus_quiz_open    點加碼挑戰 Quiz 按鈕     quiz: 商管領域 / 分子生醫領域 …
+ *   guide_open         點使用手冊／教學影片／註冊說明／作答指引   guide: resource_manual …
  * 不送出任何姓名、Email 或表單內容。
  */
 (function () {
@@ -77,6 +82,20 @@
   }, { passive: true });
   setTimeout(measure, 1500);
 
+  // 重點行動：cta_click 之外再送一個獨立事件名稱
+  function keyAction(button) {
+    if (button === "student_form") return track("student_form_open");
+    if (button === "teacher_form") return track("teacher_form_open");
+    if (button === "bonus_quiz" || button.indexOf("bonus_quiz_") === 0)
+      return track("bonus_quiz_open", { quiz: button.replace(/^bonus_quiz_?/, "") || "default" });
+    if (/^(student_)?resource|^hero_signup_video$|^account_guide$|^bonus_guide$/.test(button))
+      return track("guide_open", { guide: button });
+  }
+  function ctaClick(button) {
+    track("cta_click", { button: button });
+    keyAction(button);
+  }
+
   // ===== 點擊 =====
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest("a, summary") : null;
@@ -85,7 +104,7 @@
     if (a.dataset.topic) return track("topic_click", { topic: a.dataset.topic });
     if (a.dataset.track) {
       if (a.classList.contains("is-disabled")) return;
-      return track("cta_click", { button: a.dataset.track });
+      return ctaClick(a.dataset.track);
     }
 
     var button = null;
@@ -98,7 +117,7 @@
     else if (a.closest("#school-list")) button = "school_entry";
     if (button) {
       if (a.classList.contains("is-disabled")) return;
-      return track("cta_click", { button: button });
+      return ctaClick(button);
     }
 
     if (a.tagName === "SUMMARY") {

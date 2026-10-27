@@ -172,6 +172,10 @@ git push
 | `topic_menu_open` | 展開主題下拉選單 | `product` |
 | `cta_click` | 點擊按鈕 | `button`（student_form／teacher_form／jump_student／sticky_teacher…） |
 | `faq_open` | 展開常見問題 | `question` |
+| `student_form_open` | 點「馬上填答」（建議標記為重要事件） | — |
+| `teacher_form_open` | 點「申請服務」（建議標記為重要事件） | — |
+| `bonus_quiz_open` | 點加碼挑戰 Quiz（建議標記為重要事件） | `quiz` |
+| `guide_open` | 點使用手冊／教學影片／註冊說明／作答指引 | `guide` |
 
 GA4 後台需建立「自訂維度」（管理 → 資料顯示 → 自訂定義），報表才能依這些參數篩選：
 `school`、`topic`、`button`、`section`、`product`、`percent`、`page_type`（範圍皆選「事件」）。
