@@ -83,6 +83,10 @@
     if (!a) return;
 
     if (a.dataset.topic) return track("topic_click", { topic: a.dataset.topic });
+    if (a.dataset.track) {
+      if (a.classList.contains("is-disabled")) return;
+      return track("cta_click", { button: a.dataset.track });
+    }
 
     var button = null;
     if (a.id === "btn-student") button = "student_form";

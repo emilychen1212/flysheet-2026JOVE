@@ -44,6 +44,12 @@ const CONFIG = {
   drawMethod: "活動結束後，由主辦單位以公開隨機方式抽出得獎者（待確認）",
 
   // 老師挑戰說明
+  // 學習資源按鈕（所有學校共用，顯示在「已訂購主題」下方）
+  resources: [
+    { icon: "📘", label: "JoVE 使用手冊", url: "https://drive.google.com/file/d/12OGvvlVbMbmMf8SBYYsqr5Am0hPN8NF8/view", track: "resource_manual" },
+    { icon: "▶️", label: "建立帳號教學影片", url: "https://youtu.be/5XrQib7s_ZM?si=W6RJ7R8IkGCHFFOw", track: "resource_signup_video" }
+  ],
+
   // 老師挑戰：申請後的服務流程（顯示為步驟卡片）
   teacherSteps: [
     { title: "填寫申請表單", text: "填寫基本資料與授課課程資訊，送出申請表單。" },
@@ -53,7 +59,8 @@ const CONFIG = {
   ],
 
   // 加碼挑戰（只在 schools.js 設定 bonus: true 的學校顯示）
-  //   url 空白時按鈕顯示「即將開放」並停用；學校可用 bonusUrl 個別指定連結
+  //   url 空白時按鈕顯示「即將開放」並停用；學校可用 bonusUrl 個別指定連結，
+  //   或用 bonusLinks（多個題目按鈕）＋ bonusGuide（作答指引按鈕）
   bonusChallenge: {
     title: "加碼挑戰",
     text: "意猶未盡嗎？完成 JoVE Quiz 加碼挑戰，抽獎機會再 +1！",

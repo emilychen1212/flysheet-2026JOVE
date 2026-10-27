@@ -59,7 +59,17 @@
     return base + (base.indexOf("?") === -1 ? "?" : "&") + params.join("&");
   }
 
-  function setupFormButton(btn, url) {
+  // 產生外連按鈕；網址空白時顯示「即將開放」並停用
+  function linkButton(cls, label, url, track) {
+    var a = el("a", cls, label);
+    var u = safeUrl(url);
+    if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+    else { a.classList.add("is-disabled"); a.setAttribute("aria-disabled", "true"); a.textContent = label.replace(/ →$/, "") + "（即將開放）"; }
+    if (track) a.dataset.track = track;
+    return a;
+  }
+
+    function setupFormButton(btn, url) {
     if (url) {
       btn.href = url;
       return;
@@ -300,7 +310,34 @@
         bBtn.setAttribute("aria-disabled", "true");
         bBtn.textContent = "即將開放";
       }
+      // 多個題目按鈕＋作答指引（例如陽交大）
+      if (s.bonusLinks && s.bonusLinks.length) {
+        var acts = $("#bonus-actions");
+        acts.innerHTML = "";
+        s.bonusLinks.forEach(function (b) { acts.appendChild(linkButton("btn btn-sm bonus-btn", b.label + " →", b.url, "bonus_quiz_" + b.label)); });
+        if (s.bonusGuide) acts.appendChild(linkButton("btn btn-sm bonus-guide", "📖 " + s.bonusGuide.label, s.bonusGuide.url, "bonus_guide"));
+      }
       $("#bonus").hidden = false;
+    }
+
+    // 頁首提醒（例如陽交大：先申請個人帳號）
+    if (s.heroNote && $("#hero-note")) {
+      $("#hero-note-text").textContent = s.heroNote.text || "";
+      var hb = $("#hero-note-btn");
+      hb.textContent = s.heroNote.button || "查看說明";
+      var hUrl = safeUrl(s.heroNote.url);
+      if (hUrl) hb.href = hUrl; else hb.hidden = true;
+      $("#hero-note").hidden = false;
+    }
+
+    // 學習資源按鈕（已訂購主題下方）
+    var res = $("#resources");
+    if (res && CONFIG.resources && CONFIG.resources.length) {
+      res.appendChild(el("span", "resource-label", "還不熟悉 JoVE？"));
+      CONFIG.resources.forEach(function (r) {
+        res.appendChild(linkButton("btn btn-sm resource-btn", (r.icon ? r.icon + " " : "") + r.label, r.url, r.track || "resource"));
+      });
+      res.hidden = false;
     }
 
     var ts = CONFIG.teacherService || {};

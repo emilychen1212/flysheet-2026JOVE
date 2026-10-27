@@ -391,6 +391,29 @@ a.topic:hover, a.topic:focus-visible { animation-play-state: paused; transform: 
 .bonus-btn { background: #fff; color: #8a5300; border-color: #f2c97a; min-height: 40px; }
 .bonus-btn:hover { background: #fff1cc; }
 
+/* 已訂購主題下方：學習資源按鈕 */
+.resource-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.resource-label { font-size: 14px; font-weight: 700; color: var(--muted); margin-right: 2px; }
+.resource-btn { background: #fff; color: var(--brand); border-color: var(--line); min-height: 42px; }
+.resource-btn:hover { border-color: var(--brand); background: var(--brand-soft); }
+
+/* 頁首提醒（例如：先申請個人帳號） */
+.hero-note {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px;
+  margin-top: 16px; padding: 10px 14px; border-radius: 12px;
+  background: rgba(255,255,255,.88); border: 1px dashed #f2c97a;
+}
+.hero-note-text { font-size: 15px; font-weight: 700; color: #8a5300; }
+.hero-note-text::before { content: "⚠️ "; }
+.hero-note-btn { background: var(--highlight); color: #3d2600; min-height: 40px; }
+.hero-note-btn:hover { filter: brightness(1.05); }
+@media (min-width: 1024px) { .hero-school .hero-note { justify-content: flex-start; display: inline-flex; } }
+
+/* 加碼挑戰：多個題目按鈕 */
+.bonus-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.bonus-guide { background: transparent; color: #8a5300; border-color: transparent; text-decoration: underline; text-underline-offset: 3px; min-height: 40px; padding: 0 8px; }
+.bonus-guide:hover { background: #fff1cc; }
+
 /* ===== 活動注意事項 ===== */
 .notices {
   margin: 0; padding: 18px 18px 18px 38px; background: #fff;

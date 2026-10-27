@@ -19,6 +19,9 @@
  *                 填 true／false 可強制開啟／關閉折疊（選填）
  *   gifts         禮品 [{ tier, item, qty, pending, teacher }]；teacher: true 顯示「老師挑戰限定」標籤
  *   bonus         true → 在學生挑戰與老師挑戰之間顯示「加碼挑戰」（JoVE Quiz）區塊（選填）
+ *   bonusLinks    加碼挑戰的多個題目按鈕 [{ label, url }]（選填，取代單一「我要參加」按鈕）
+ *   bonusGuide    加碼挑戰的作答指引按鈕 { label, url }（選填，url 空白顯示「即將開放」）
+ *   heroNote      頁首按鈕下方的提醒＋按鈕 { text, button, url }（選填）
  *   note          該校專屬說明（選填）
  *
  * pending: true → 顯示黃色「待確認」標籤，確認後刪除這行即可。
@@ -183,6 +186,18 @@ const SCHOOLS = {
       { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
     bonus: true,          // 顯示「加碼挑戰」區塊
+    bonusLinks: [
+      { label: "商管領域", url: "https://www.jove.com/quiz/invite/7e006a3d-53c0-4533-8425-f7f6657ed313" },
+      { label: "理化領域", url: "https://www.jove.com/quiz/invite/1d0ae1f5-1be3-4ab8-b27f-62bfc3e1125b" },
+      { label: "生醫領域", url: "https://www.jove.com/quiz/invite/ef9e85a0-5641-40a6-a9b5-7887ca102755" }
+    ],
+    bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "" },   // 待提供連結
+    // 頁首提醒（banner 按鈕下方）
+    heroNote: {
+      text: "參加活動請記得先申請個人帳號",
+      button: "如何註冊 NYCU 個人帳號",
+      url: "https://drive.google.com/file/d/1U6Eho2ExWo4iog4e6zrv1UuxYLakyaf1/view"
+    },
     note: ""
   }
 };
