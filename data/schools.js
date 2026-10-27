@@ -72,6 +72,7 @@ const SCHOOLS = {
       { tier: "老師獎", item: "星巴克禮券", qty: 10, teacher: true }
     ],
     bonus: true,          // 顯示「加碼挑戰」區塊
+    bonusUrl: "https://www.jove.com/quiz/invite/45810668-1df9-4a19-b343-c9fc9cb38f3c",
     // 專屬使用手冊（取代共用手冊）
     manualUrl: "https://drive.google.com/file/d/1Ar7iOMqOdpiaiyRL-doCNc7I_C3vtWgY/view",
     // 頁首提醒（banner 按鈕下方）
