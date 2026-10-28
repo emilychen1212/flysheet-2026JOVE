@@ -67,7 +67,7 @@ const SCHOOLS = {
     gifts: [
       { tier: "首獎", item: "樂扣樂扣綿綿奶蓋不鏽鋼吸管隨行杯", qty: 1 },
       { tier: "二獎", item: "iwalk 行動電源（Type-C 頭）", qty: 1 },
-      { tier: "三獎", item: "7-11 $200 商品卡", qty: 2 },
+      { tier: "三獎", item: "超商禮品卡 $100", qty: 5 },
       { tier: "參加獎", item: "JoVE 贈品（杯子／帆布袋／筆記本 各 2 份）", qty: 6 },
       { tier: "老師獎", item: "星巴克禮券", qty: 10, teacher: true }
     ],
