@@ -112,7 +112,7 @@ const SCHOOLS = {
     active: true,
     themeColor: "",
     bannerImage: "",
-    topics: ["core-calculus"],
+    topics: ["core-calculus", "journal-cancer-research"],
     gifts: [
       { tier: "首獎", item: "超商禮品卡 $100", qty: 5, unit: "份" },
       { tier: "貳獎", item: "7-11 飲料兌換券", qty: 5, unit: "份" },
