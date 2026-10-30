@@ -179,6 +179,13 @@ const SCHOOLS = {
       { tier: "參獎", item: "JoVE 學習好物組（JoVE 杯子＋筆記本＋帆布袋）", qty: 1 },
       { tier: "老師獎", item: "星巴克飲料兌換券", qty: 10, teacher: true }
     ],
+    bonus: true,          // 顯示「加碼挑戰」區塊
+    bonusLinks: [
+      { label: "生醫領域", url: "https://www.jove.com/quiz/invite/b7c4abb4-95d5-4037-8d5c-6c54cd5e5e36" },
+      { label: "理化領域", url: "https://www.jove.com/quiz/invite/dc10eed0-491f-4c28-a90b-43d6b20cd10f" },
+      { label: "人社領域", url: "https://www.jove.com/quiz/invite/055b42b5-6179-40df-b28f-47bea3b08d0f" }
+    ],
+    bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
     note: ""
   },
 
