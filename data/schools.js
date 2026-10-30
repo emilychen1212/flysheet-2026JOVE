@@ -186,6 +186,14 @@ const SCHOOLS = {
       { label: "人社領域", url: "https://www.jove.com/quiz/invite/055b42b5-6179-40df-b28f-47bea3b08d0f" }
     ],
     bonusGuide: { label: "JoVE Quiz 學生作答流程指引", url: "https://drive.google.com/file/d/1tf02KHcMmllFWePbN8OxjxlrBnS5xLXt/view" },
+    // 專屬使用手冊（取代共用手冊）
+    manualUrl: "https://drive.google.com/file/d/18OIHC96DJNhKHSv9isOJn5Dn-yEfCbM3/view?usp=sharing",
+    // 頁首提醒（banner 按鈕下方）
+    heroNote: {
+      text: "參加活動請記得先申請個人帳號",
+      button: "如何註冊 NTHU 個人帳號",
+      url: "https://drive.google.com/file/d/1jjg9Gfufwm5Blr7jDM11O1JEWcDva-OH/view?usp=sharing"
+    },
     note: ""
   },
 
